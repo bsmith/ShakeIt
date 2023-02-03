@@ -39,6 +39,8 @@ npm install
 
 git is not initialised, so you'd need to do this yourself.
 
+# Run your program
+
 To run your program:
 
 ```
