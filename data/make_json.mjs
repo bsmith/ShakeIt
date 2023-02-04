@@ -26,34 +26,47 @@ const writeJSONFile = function (filename, data) {
     fs.writeFileSync(filename, JSON.stringify(data));
 }
 
-const rows = await readCSVFile('./iba_cocktails.csv');
-console.log(`Read ${rows.length} rows`);
-// console.log(rows);
-
-const cocktails = [];
-let last_cocktail;
-for (const row of rows) {
-    /* new cocktail */
-    if (row['Name'] && row['Name'].length > 0) {
-        last_cocktail = {};
-        last_cocktail.name = row['Name'];
-        last_cocktail.list = row['List'];
-        last_cocktail.description = row['Description'];
-        last_cocktail.ingredients = [];
-        cocktails.push(last_cocktail);
-    }
-    /* add ingredient to last cocktail */
-    else {
-        const ingredient = {};
-        ingredient.number = parseInt(row['Ingredient Number']);
-        ingredient.name = row['Ingredient'];
-        ingredient.quantity = parseFloat(row['Quantity']);
-        ingredient.quantityUnit = row['Quantity Unit'];
-        ingredient.garnish = row['Garnish'] == 'TRUE' ? true : false;
-        last_cocktail.ingredients.push(ingredient);
-    }
+const makeCocktailFromRow = (row) => {
+    const cocktail = {};
+    cocktail.name = row['Name'];
+    cocktail.list = row['List'];
+    cocktail.description = row['Description'];
+    cocktail.ingredients = [];
+    return cocktail;
 }
 
+const makeIngredientFromRow = (row) => {
+    const ingredient = {};
+    ingredient.number = parseInt(row['Ingredient Number']);
+    ingredient.name = row['Ingredient'];
+    ingredient.quantity = parseFloat(row['Quantity']);
+    ingredient.quantityUnit = row['Quantity Unit'];
+    ingredient.garnish = row['Garnish'] == 'TRUE' ? true : false;
+    return ingredient;
+}
+
+const makeCocktailsFromRows = (rows) => {
+    const cocktails = [];
+    let last_cocktail;
+    for (const row of rows) {
+        /* new cocktail */
+        if (row['Name'] && row['Name'].length > 0) {
+            last_cocktail = makeCocktailFromRow(row);
+            cocktails.push(last_cocktail);
+        }
+        /* add ingredient to last cocktail */
+        else {
+            const ingredient = makeIngredientFromRow(row);
+            last_cocktail.ingredients.push(ingredient);
+        }
+    }
+    return cocktails;
+}
+
+const rows = await readCSVFile('./iba_cocktails.csv');
+console.log(`Read ${rows.length} rows`);
+
+const cocktails = makeCocktailsFromRows(rows);
 console.log(`Made ${cocktails.length} cocktails`);
 
 writeJSONFile('./iba_cocktails.json', cocktails);
