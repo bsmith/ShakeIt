@@ -1,12 +1,14 @@
 {
   "name": "shakeit-data",
   "version": "1.0.0",
-  "description": "",
+  "description": "Make JSON files of cocktail data for ShakeIt",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node make_json.mjs",
+    "test": "mocha tests"
   },
   "dependencies": {
-    "csv-parser": "^3.0.0"
+    "csv-parser": "^3.0.0",
+    "mocha": "^10.2.0"
   }
 }
