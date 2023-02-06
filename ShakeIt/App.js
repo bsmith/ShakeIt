@@ -1,14 +1,18 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Welcome from "./screens/Welcome";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    // <SafeAreaView>
-    <View className="flex-1 items-center justify-center bg-red-600">
-      <Text>Open up App.js to start working on your app!skdfskj</Text>
-      <StatusBar style="auto" />
-    </View>
-    // </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Welcome" component={Welcome} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
