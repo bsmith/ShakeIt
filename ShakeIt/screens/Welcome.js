@@ -5,13 +5,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 
 const Welcome = () => {
-  const navigation = useNavigation();
+  //   const navigation = useNavigation();
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
+  //   useLayoutEffect(() => {
+  //     navigation.setOptions({
+  //       headerShown: false,
+  //     });
+  //   }, []);
 
   return (
     <SafeAreaView className="bg-white pt-5">
