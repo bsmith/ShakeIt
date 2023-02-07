@@ -1,4 +1,4 @@
-export default recipeData = {
+const recipeData = {
     "brandyalexander": {
         "name": "Brandy Alexander",
         "shortDescription": "A rich, creamy classic",
@@ -316,3 +316,5 @@ export default recipeData = {
         ],
     },
 };
+
+export default recipeData;

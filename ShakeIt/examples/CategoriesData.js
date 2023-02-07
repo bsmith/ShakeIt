@@ -1,6 +1,6 @@
-import recipeData from './RecipeData';
+import recipeData from './RecipeData.js';
 
-export default categoriesData = {
+const categoriesData = {
     "brandy": {
         "name": "Brandy Cocktails",
         "members": {
@@ -34,3 +34,5 @@ console.log(`Recipe keys not in categories: ${recipeKeys}`);
 for (const recipeKey of recipeKeys) {
     categoriesData["others"].members[recipeKey] = true;
 }
+
+export default categoriesData;
