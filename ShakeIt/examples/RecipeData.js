@@ -299,6 +299,41 @@ const recipeData = {
             },
         ],
     },
+    "aviation": {
+        "name": "Aviation",
+        "shortDescription": "A careful balance of gin and bitter cherry",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Aviation_Cocktail.jpg/500px-Aviation_Cocktail.jpg",
+        "description": "Made with gin, maraschino liqueur, crème de violette, and lemon juice. Some recipes omit the crème de violette.",
+        "garnishes": "Garnish with a cherry",
+        "instructions": "Add all the ingredients to your cocktail shaker.  Shake vigourously and double strain into a chilled coupette glass.  Garnish with a cocktail cherry.",
+        "ingredients": [
+          {
+            "number": 1,
+            "name": "gin",
+            "quantity": 1.75,
+            "quantityUnit": "part",
+          },
+          {
+            "number": 2,
+            "name": "maraschino liqueur",
+            "quantity": 0.25,
+            "quantityUnit": "part",
+          },
+          {
+            "number": 3,
+            "name": "crème de violette",
+            "quantity": 0.25,
+            "quantityUnit": "part",
+          },
+          {
+            "number": 4,
+            "name": "lemon juice",
+            "quantity": 0.5,
+            "quantityUnit": "part",
+          }
+        ]
+      },
+    
     "[template]": {
         "name": "[string]",
         "shortDescription": "[string]",
