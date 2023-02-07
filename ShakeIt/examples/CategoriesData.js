@@ -6,6 +6,7 @@ export default categoriesData = {
         "members": {
             "brandyalexander": true,
             "applejack": true,
+            "sidecar": true,
         },
     },
     "whiskey": {
