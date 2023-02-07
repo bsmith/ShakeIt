@@ -1,4 +1,4 @@
-import { View, Text, TextInput, ScrollView } from "react-native";
+import { View, Text, TextInput, ScrollView, Pressable } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,13 +19,15 @@ const Welcome = () => {
         headerShown: false,
       });
     }, []);
-
+  
   return (
     <SafeAreaView className="bg-white pt-5">
-      {/* <View className="bg-red-400">
-        <Text>WELCOME</Text>
+      <Pressable onPress = {() =>
+        navigation.navigate("Explore")
+      }><Text>Explore</Text>
+  </Pressable>
 
-      </View> */}
+      
       
       <MainContainer />
     </SafeAreaView>
