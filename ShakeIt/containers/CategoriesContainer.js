@@ -1,12 +1,23 @@
 import { View, Text, ScrollView, Pressable, Button } from "react-native";
-import React, { useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import categoriesData from "../examples/CategoriesData";
-import recipeData from "../examples/RecipeData";
+import { getAllRecipes } from "../services/RecipesService";
+import { getAllCategories } from "../services/CategoriesService";
 
 const CategoriesContainer = () => {
   const navigation = useNavigation();
+
+  const [categoriesData, setCategoriesData] = useState({});
+
+  useEffect(() => {
+    console.log(`Fetching all categories`)
+    getAllCategories()
+      .then((categoriesData) => {
+        setCategoriesData(categoriesData);
+        console.log(`Got all categories!`)
+      })
+  }, []);
 
   const pressRecipe = useCallback((recipeKey) => {
     console.log(`pressRecipe: ${recipeKey}`);
@@ -21,9 +32,10 @@ const CategoriesContainer = () => {
       { Object.keys(categoriesData).map(catKey => {
         const category = categoriesData[catKey];
         const recipes = Object.keys(category.members).map(recipeKey => {
-          const recipe = {...recipeData[recipeKey]};
-          recipe.key = recipeKey;
-          return recipe;
+          return {
+            key: recipeKey,
+            name: recipeKey
+          }
         })
         const recipeItems = recipes.map(recipe => {
           return <Pressable
@@ -41,18 +53,6 @@ const CategoriesContainer = () => {
           {recipeItems}
         </>
       }) }
-
-      <Text className="font-bold text-4xl text-center">
-        Raw JSON
-      </Text>
-      {/* Font support is a complex issue */}
-      {/*<Text className="font-mono">*/}
-      <Text>
-        { JSON.stringify(categoriesData) }
-      </Text>
-      <Text>
-        { JSON.stringify(recipeData) }
-      </Text>
     </ScrollView>
   );
 };

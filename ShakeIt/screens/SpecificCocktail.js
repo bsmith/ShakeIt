@@ -1,12 +1,26 @@
 import { View, Text, Image } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import recipeData from "../examples/RecipeData";
+import { getRecipeById } from "../services/RecipesService";
 
 const SpecificCocktail = ({ route, navigation }) => {
   const { recipeKey } = route.params;
-  const recipe = recipeData[recipeKey];
+  // const recipe = recipeData[recipeKey];
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    console.log(`Fetching recipe ${recipeKey}`)
+    getRecipeById(recipeKey)
+      .then((recipe) => {
+        console.log(recipe);
+        setRecipe(recipe)
+      })
+  }, [recipeKey]);
+
+  if (!recipe) {
+    return <Text>Loading...</Text>
+  }
 
   const img = !recipe.imgUrl.startsWith('http') ? null :
     <Image
