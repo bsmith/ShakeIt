@@ -95,4 +95,48 @@ export default recipeData = {
             },
         ],
     },
+    "americano": {
+        "name": "Americano",
+        "shortDescription": "Sparkling drink of Campari and sweet vermouth",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Americano_cocktail_at_Nightwood_Restaurant.jpg/500px-Americano_cocktail_at_Nightwood_Restaurant.jpg",
+        "description": "Made with Campari, sweet vermouth, and garnished with a slice of lemon.",
+        "garnishes": "Garnish with a slice of lemon",
+        "instructions": null,
+        "ingredients": [
+            {
+                "number": 1,
+                "name": "Campari",
+                "quantity": 45,
+                "quantityUnit": "ml",
+            },
+            {
+                "number": 2,
+                "name": "sweet vermouth",
+                "quantity": 45,
+                "quantityUnit": "ml",
+            },
+            {
+                "number": 3,
+                "name": "soda water",
+                "quantity": 75,
+                "quantityUnit": "ml",
+            },
+        ],
+    },
+    "[template]": {
+        "name": "[string]",
+        "shortDescription": "[string]",
+        "imgUrl": "[url]",
+        "description": "[string]",
+        "garnishes": "[string]",
+        "instructions": "[string]",
+        "ingredients": [
+            {
+                "number": 1,
+                "name": "name",
+                "quantity": 1,
+                "quantityUnit": "unit",
+            },
+        ],
+    },
 };

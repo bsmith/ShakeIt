@@ -1,3 +1,5 @@
+import recipeData from './RecipeData';
+
 export default categoriesData = {
     "brandy": {
         "name": "Brandy Cocktails",
@@ -12,4 +14,22 @@ export default categoriesData = {
             "oldfashioned": true,
         },
     },
+    "others": {
+        "name": "Other Cocktails",
+        "members": { },
+    }
 };
+
+let recipeKeys = Object.keys(recipeData)
+    .filter(key => key !== "[template]");
+
+for (const category of Object.values(categoriesData)) {
+    for (const recipeKey of Object.keys(category.members)) {
+        recipeKeys = recipeKeys.filter(key => key !== recipeKey);
+    }
+}
+
+console.log(`Recipe keys not in categories: ${recipeKeys}`);
+for (const recipeKey of recipeKeys) {
+    categoriesData["others"].members[recipeKey] = true;
+}
