@@ -12,7 +12,7 @@ const SpecificCocktail = ({ route, navigation }) => {
     <View className="flex flex-column">
       <Text>SpecificCocktail recipeKey={recipeKey}</Text>
       { Object.keys(recipe).map(key => {
-        return <Text>{key} = {JSON.stringify(recipe[key])}</Text>
+        return <Text key={key}>{key} = {JSON.stringify(recipe[key])}</Text>
       }) }
     </View>
   );
