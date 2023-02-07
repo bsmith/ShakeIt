@@ -332,8 +332,23 @@ const recipeData = {
             "quantityUnit": "part",
           }
         ]
-      },
-    
+    },
+    "godfather": {
+        "name": "Godfather",
+        "shortDescription": "Duo of whisky and amaretto",
+        "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Godfather_cocktail.jpg/500px-Godfather_cocktail.jpg",
+        "description": "The Godfather is a duo mixed drink made of Scotch whisky (especially smoky Scotch) and amaretto. Typically, the drink is served with ice in an old fashioned glass.\n\n[par]As with many cocktails, the origin of the Godfather's name is uncertain. The amaretto brand Disaronno claims the drink was the favorite cocktail of American actor Marlon Brando, known for playing the titular character in the popular American film adaptation of Mario Puzo's The Godfather, which prominently features the Italian mob. This may be an allusion to the cocktail's prominent use of amaretto, an Italian liqueur. This drink was also a favorite of the Rat Pack.",
+        "garnishes": "[string]",
+        "instructions": "[string]",
+        "ingredients": [
+            {
+                "number": 1,
+                "name": "name",
+                "quantity": 1,
+                "quantityUnit": "unit",
+            },
+        ],
+    },
     "[template]": {
         "name": "[string]",
         "shortDescription": "[string]",

@@ -13,6 +13,7 @@ const categoriesData = {
         "name": "Whisky Cocktails",
         "members": {
             "oldfashioned": true,
+            "godfather": true,
         },
     },
     "others": {

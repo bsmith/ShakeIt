@@ -10,6 +10,8 @@ export const writeJSONFile = function (filename, data) {
     fs.writeFileSync(pathname, JSON.stringify(data));
 };
 
+delete recipeData['[template]'];
+
 writeJSONFile('examples/recipes.json', recipeData);
 writeJSONFile('examples/categories.json', categoriesData);
 console.log(`Finished`);
