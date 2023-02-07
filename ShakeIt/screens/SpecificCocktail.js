@@ -5,18 +5,17 @@ import { useNavigation } from "@react-navigation/native";
 import { getRecipeById } from "../services/RecipesService";
 
 const SpecificCocktail = ({ route, navigation }) => {
-  const { recipeKey } = route.params;
-  // const recipe = recipeData[recipeKey];
+  const { recipeId } = route.params;
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    console.log(`Fetching recipe ${recipeKey}`)
-    getRecipeById(recipeKey)
+    console.log(`Fetching recipe ${recipeId}`)
+    getRecipeById(recipeId)
       .then((recipe) => {
         console.log(recipe);
         setRecipe(recipe)
       })
-  }, [recipeKey]);
+  }, [recipeId]);
 
   if (!recipe) {
     return <Text>Loading...</Text>
@@ -35,7 +34,7 @@ const SpecificCocktail = ({ route, navigation }) => {
   return (
     <View className="flex flex-column">
       {img}
-      <Text>SpecificCocktail recipeKey={recipeKey}</Text>
+      <Text>SpecificCocktail recipeId={recipeId}</Text>
       { Object.keys(recipe).map(key => {
         return <Text key={key}>{key} = {JSON.stringify(recipe[key])}</Text>
       }) }
