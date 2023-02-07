@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Pressable, Button } from "react-native";
+import { View, Text, ScrollView, Pressable, Image } from "react-native";
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
  HEAD
@@ -21,9 +21,9 @@ const CategoriesContainer = () => {
       })
   }, []);
 
-  const pressRecipe = useCallback((recipeKey) => {
-    console.log(`pressRecipe: ${recipeKey}`);
-    navigation.navigate('SpecificCocktail', { recipeKey: recipeKey })
+  const pressRecipe = useCallback((recipeId) => {
+    console.log(`pressRecipe: ${recipeId}`);
+    navigation.navigate('SpecificCocktail', { recipeKey: recipeId })
   }, []);
 
   /* Should probably be a SectionList */
@@ -56,20 +56,22 @@ const CategoriesContainer = () => {
 
       <Text>CategoriesContainer</Text>
 
-      { Object.keys(categoriesData).map(catKey => {
-        const category = categoriesData[catKey];
-        const recipes = Object.keys(category.members).map(recipeKey => {
-          return {
-            key: recipeKey,
-            name: recipeKey
-          }
-        })
+      { Object.keys(categoriesData).map(catId => {
+        const category = categoriesData[catId];
+        const recipes = Object.values(category.members);
         const recipeItems = recipes.map(recipe => {
           return <Pressable
-              key={recipe.key}
-              className="h-12"
-              onPress={() => pressRecipe(recipe.key)}
+              key={recipe.id}
+              className="h-12 flex-row"
+              onPress={() => pressRecipe(recipe.id)}
             >
+            <Image
+              source={{
+                uri: recipe.imgUrl,
+                width: 32,
+                height: 32,
+              }}
+            />
             <Text className="text-base">{recipe.name}</Text>
           </Pressable>
         });
