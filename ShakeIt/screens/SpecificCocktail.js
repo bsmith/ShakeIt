@@ -13,8 +13,9 @@ const SpecificCocktail = ({ route, navigation }) => {
       source={{
         uri: recipe.imgUrl,
         width: 128,
-        height: 128
+        height: 128,
       }}
+      resizeMode={'cover' /* 'cover' zooms into to fill, 'contain' shows whole image */}
       />
 
   return (
