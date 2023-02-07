@@ -2,7 +2,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Explore from "./screens/Explore";
 import Welcome from "./screens/Welcome";
-import Explore from "./screens/Explore";
 import SpecificCategory from "./screens/SpecificCategory";
 import SpecificCocktail from "./screens/SpecificCocktail";
 import SearchInput from "./screens/SearchInput";
