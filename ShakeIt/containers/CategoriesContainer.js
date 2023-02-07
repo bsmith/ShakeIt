@@ -1,11 +1,19 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 
+import CategoriesData from "../examples/CategoriesData";
+
 const CategoriesContainer = () => {
+  /* Should probably be a SectionList */
   return (
-    <View>
+    <ScrollView className="flex flex-column">
       <Text>CategoriesContainer</Text>
-    </View>
+      {/* Font support is a complex issue */}
+      {/*<Text className="font-mono">*/}
+      <Text>
+        { JSON.stringify(CategoriesData) }
+      </Text>
+    </ScrollView>
   );
 };
 
