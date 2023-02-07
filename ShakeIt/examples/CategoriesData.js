@@ -36,4 +36,17 @@ for (const recipeKey of recipeKeys) {
     categoriesData["others"].members[recipeKey] = true;
 }
 
+/* Add the summary data about recipes */
+for (const category of Object.values(categoriesData)) {
+    for (const recipeKey of Object.keys(category.members)) {
+        const recipe = recipeData[recipeKey];
+        category.members[recipeKey] = {
+            id: recipeKey,
+            name: recipe.name,
+            shortDescription: recipe.shortDescription,
+            imgUrl: recipe.imgUrl,
+        };
+    }
+}
+
 export default categoriesData;
