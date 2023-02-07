@@ -36,6 +36,7 @@ const AppNavigator = () => {
         <Stack.Screen
           name="SpecificCocktail"
           component={SpecificCocktail}
+          getId={({ params }) => params.recipeKey }
         />
         <Stack.Screen
           name="SearchInput"

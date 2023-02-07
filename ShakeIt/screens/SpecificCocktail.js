@@ -1,10 +1,19 @@
 import { View, Text } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
-const SpecificCocktail = () => {
+import recipeData from "../examples/RecipeData";
+
+const SpecificCocktail = ({ route, navigation }) => {
+  const { recipeKey } = route.params;
+  const recipe = recipeData[recipeKey];
+
   return (
-    <View>
-      <Text>SpecificCocktail</Text>
+    <View className="flex flex-column">
+      <Text>SpecificCocktail recipeKey={recipeKey}</Text>
+      { Object.keys(recipe).map(key => {
+        return <Text>{key} = {JSON.stringify(recipe[key])}</Text>
+      }) }
     </View>
   );
 };

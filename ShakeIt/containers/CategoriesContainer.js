@@ -54,7 +54,7 @@ const CategoriesContainer = () => {
               className="h-12"
               onPress={() => pressRecipe(recipe.key)}
             >
-            <Text>{recipe.name}</Text>
+            <Text className="text-base">{recipe.name}</Text>
           </Pressable>
         });
         return <>
