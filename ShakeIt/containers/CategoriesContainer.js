@@ -1,8 +1,10 @@
-import { ScrollView } from "react-native";
+
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import CategorySlider from "../components/CategorySlider";
 
 const CategoriesContainer = () => {
+  /* Should probably be a SectionList */
   return (
     <ScrollView className="bg-grey-100">
     {/* contentContainerStyle={{ paddingBottom: 100 }} */}
