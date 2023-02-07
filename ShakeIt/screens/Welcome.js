@@ -39,11 +39,22 @@ const Welcome = () => {
   
   return (
     <SafeAreaView className="bg-white pt-5">
-      <MainContainer />
       <Pressable onPress = {() =>
         navigation.navigate("Explore")
-      }><Text className="mx-4">Explore here</Text>
+      }><Text>Explore</Text>
+  </Pressable>
+
+  <Pressable
+        onPress = {() => navigation.navigate("SpecificCocktail", { recipeId: "brandyalexander" }) }
+      >
+        <Text>Brandy Alexander</Text>
       </Pressable>
+
+      
+      
+      <MainContainer />
+
+
     </SafeAreaView>
   );
 };
