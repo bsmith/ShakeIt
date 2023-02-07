@@ -22,26 +22,26 @@ const categoriesData = {
     }
 };
 
-let recipeKeys = Object.keys(recipeData)
-    .filter(key => key !== "[template]");
+let recipeIds = Object.keys(recipeData)
+    .filter(id => id !== "[template]");
 
 for (const category of Object.values(categoriesData)) {
-    for (const recipeKey of Object.keys(category.members)) {
-        recipeKeys = recipeKeys.filter(key => key !== recipeKey);
+    for (const recipeId of Object.keys(category.members)) {
+        recipeIds = recipeIds.filter(id => id !== recipeId);
     }
 }
 
-console.log(`Recipe keys not in categories: ${recipeKeys}`);
-for (const recipeKey of recipeKeys) {
-    categoriesData["others"].members[recipeKey] = true;
+console.log(`Recipe ids not in categories: ${recipeIds}`);
+for (const recipeId of recipeIds) {
+    categoriesData["others"].members[recipeId] = true;
 }
 
 /* Add the summary data about recipes */
 for (const category of Object.values(categoriesData)) {
-    for (const recipeKey of Object.keys(category.members)) {
-        const recipe = recipeData[recipeKey];
-        category.members[recipeKey] = {
-            id: recipeKey,
+    for (const recipeId of Object.keys(category.members)) {
+        const recipe = recipeData[recipeId];
+        category.members[recipeId] = {
+            id: recipeId,
             name: recipe.name,
             shortDescription: recipe.shortDescription,
             imgUrl: recipe.imgUrl,

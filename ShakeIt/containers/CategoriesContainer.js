@@ -21,7 +21,7 @@ const CategoriesContainer = () => {
 
   const pressRecipe = useCallback((recipeId) => {
     console.log(`pressRecipe: ${recipeId}`);
-    navigation.navigate('SpecificCocktail', { recipeKey: recipeId })
+    navigation.navigate('SpecificCocktail', { recipeId: recipeId })
   }, []);
 
   /* Should probably be a SectionList */
