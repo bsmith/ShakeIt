@@ -1,4 +1,4 @@
-export default CategoriesData = {
+export default categoriesData = {
     "brandy": {
         "name": "Brandy Cocktails",
         "members": {
@@ -12,4 +12,4 @@ export default CategoriesData = {
             "oldfashioned": true,
         },
     },
-}
+};
