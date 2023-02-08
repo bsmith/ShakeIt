@@ -2,11 +2,11 @@ import { View, Text } from "react-native";
 import React from "react";
 
 const SCIngredients = ({recipe}) => {
-  const ingredientItems = recipe.ingredients.map(ingredient => {
+  const ingredientItems = recipe.ingredients.map((ingredient, index) => {
     return (
       <View className="flex-row mx-8 mb-1">
         <Text className="w-4 text-lg h-4">•</Text>
-        <Text className="text-base grow">{ingredient.name}</Text>
+        <Text className="text-base grow">{index} {ingredient.name}</Text>
         <Text className="text-base">{ingredient.quantity} {ingredient.quantityUnit}</Text>
       </View>
     )
