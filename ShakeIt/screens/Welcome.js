@@ -16,26 +16,19 @@ import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const Welcome = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-  const [value, setValue] = useState(null);
-  useEffect(() => {
-    const starCountRef = ref(db, "recipe");
-    // const starCountRef = ref(db, "recipe" + postId + "/starCount");
-    onValue(starCountRef, snapshot => {
-      const data = snapshot.val();
+  // const [value, setValue] = useState(null);
+  // useEffect(() => {
+  //   const starCountRef = ref(db, "recipe");
+  //   // const starCountRef = ref(db, "recipe" + postId + "/starCount");
+  //   onValue(starCountRef, snapshot => {
+  //     const data = snapshot.val();
 
-      setValue(data);
-      console.log(data);
-      console.log(data.description);
-    });
-  }, []);
-
-    useLayoutEffect(() => {
-      navigation.setOptions({
-        headerShown: false,
-      });
-    }, []);
+  //     setValue(data);
+  //     console.log(`Fetched data from Firebase: ${data.description}`);
+  //   });
+  // }, []);
   
   return (
     <SafeAreaView className="bg-white pt-5">
@@ -46,9 +39,9 @@ const Welcome = () => {
       </Pressable>
 
       <Pressable
-        onPress = {() => navigation.navigate("SpecificCocktail", { recipeId: "brandyalexander" }) }
+        onPress = {() => navigation.navigate("SpecificCocktail", { recipeId: "mojito" }) }
       >
-        <Text className="mx-4">Brandy Alexander</Text>
+        <Text className="mx-4">Mojito</Text>
       </Pressable>
 
     </SafeAreaView>

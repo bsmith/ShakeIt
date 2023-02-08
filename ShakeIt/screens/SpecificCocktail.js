@@ -1,8 +1,10 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { getRecipeById } from "../services/RecipesService";
+import SCTabs from "../components/SpecificCocktail/SCTabs";
+import CocktailDescription from "../components/SpecificCocktail/CocktailDescription";
 
 const SpecificCocktail = ({ route, navigation }) => {
   const { recipeId } = route.params;
@@ -21,25 +23,26 @@ const SpecificCocktail = ({ route, navigation }) => {
     return <Text>Loading...</Text>
   }
 
-  const img = !recipe.imgUrl.startsWith('http') ? null :
-    <Image
-      source={{
-        uri: recipe.imgUrl,
-        width: 128,
-        height: 128,
-      }}
-      resizeMode={'cover' /* 'cover' zooms into to fill, 'contain' shows whole image */}
-      />
+  // return (
+  //   <View className="flex flex-column">
+  //     {img}
+  //     <Text>SpecificCocktail recipeId={recipeId}</Text>
+  //     { Object.keys(recipe).map(key => {
+  //       return <Text key={key}>{key} = {JSON.stringify(recipe[key])}</Text>
+  //     }) }
+  //   </View>
+  // );
 
   return (
-    <View className="flex flex-column">
-      {img}
-      <Text>SpecificCocktail recipeId={recipeId}</Text>
-      { Object.keys(recipe).map(key => {
-        return <Text key={key}>{key} = {JSON.stringify(recipe[key])}</Text>
-      }) }
+    <View className="flex">
+      <View className="">
+        <CocktailDescription recipe={recipe} />
+      </View>
+      <View className="h-3/5">
+        <SCTabs />
+      </View>
     </View>
-  );
-};
+  )
+}
 
 export default SpecificCocktail;
