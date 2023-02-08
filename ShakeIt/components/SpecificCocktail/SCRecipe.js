@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const SCRecipe = () => {
+const SCRecipe = ({recipe}) => {
   return (
-    <View>
-      <Text>SCRecipe</Text>
+    <View className="my-6 mx-6">
+      <Text className="text-base">{recipe.instructions}</Text>
     </View>
   );
 };

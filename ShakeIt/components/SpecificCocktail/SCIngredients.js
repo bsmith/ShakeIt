@@ -1,10 +1,21 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const SCIngredients = () => {
+const SCIngredients = ({recipe}) => {
+  const ingredientItems = recipe.ingredients.map(ingredient => {
+    return (
+      <View className="flex-row mx-8 mb-1">
+        <Text className="w-4 text-lg h-4">•</Text>
+        <Text className="text-base grow">{ingredient.name}</Text>
+        <Text className="text-base">{ingredient.quantity} {ingredient.quantityUnit}</Text>
+      </View>
+    )
+  })
+
   return (
-    <View>
-      <Text>SCIngredients</Text>
+    <View className="my-6 mx-6">
+      <Text className="text-base mb-4 text-center">{recipe.garnishes}</Text>
+      {ingredientItems}
     </View>
   );
 };

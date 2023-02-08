@@ -39,7 +39,7 @@ const SpecificCocktail = ({ route, navigation }) => {
         <CocktailDescription recipe={recipe} />
       </View>
       <View className="h-3/5">
-        <SCTabs />
+        <SCTabs recipe={recipe} />
       </View>
     </View>
   )
