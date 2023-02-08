@@ -22,14 +22,12 @@ const Welcome = () => {
   
   return (
     <SafeAreaView className="bg-white pt-5">
+      <MainContainer />
       <Pressable onPress = {() =>
         navigation.navigate("Explore")
-      }><Text>Explore</Text>
-  </Pressable>
+      }><Text className="mx-4">Explore here</Text>
+      </Pressable>
 
-      
-      
-      <MainContainer />
     </SafeAreaView>
   );
 };
