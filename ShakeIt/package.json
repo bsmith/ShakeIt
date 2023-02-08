@@ -28,7 +28,9 @@
     "react-native-svg": "13.4.0",
     "react-native-tab-view": "^3.3.4",
     "react-native-web": "~0.18.9",
-    "react-native-pager-view": "6.0.1"
+    "react-native-pager-view": "6.0.1",
+    "react-native-reanimated": "~2.12.0",
+    "react-native-collapsible-tab-view": "rc"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
