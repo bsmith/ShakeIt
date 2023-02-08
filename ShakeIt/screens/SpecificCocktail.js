@@ -34,13 +34,9 @@ const SpecificCocktail = ({ route, navigation }) => {
         <Tabs.Container
             renderHeader={Header}
         >
-            <Tabs.Tab name="Ingredients" key="ingredients">
-                <Tabs.ScrollView>
-                    <SCIngredients recipe={recipe} />
-                </Tabs.ScrollView>
-            </Tabs.Tab>
             <Tabs.Tab name="Recipe" key="recipe">
                 <Tabs.ScrollView>
+                    <SCIngredients recipe={recipe} />
                     <SCRecipe recipe={recipe} />
                 </Tabs.ScrollView>
             </Tabs.Tab>

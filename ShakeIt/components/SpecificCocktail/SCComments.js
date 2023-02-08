@@ -17,6 +17,8 @@ const SCComments = ({recipe}) => {
       <Comment />
       <Comment />
       <Comment />
+      <Comment />
+      <Comment />
     </View>
   );
 };

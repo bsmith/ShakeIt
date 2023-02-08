@@ -67,11 +67,11 @@ const Welcome = () => {
       <Pressable
         onPress={() =>
           navigation.navigate("SpecificCocktail", {
-            recipeId: "brandyalexander",
+            recipeId: "whiterussian",
           })
         }
       >
-        <Text className="mx-4">Brandy Alexander</Text>
+        <Text className="mx-4">White Russian</Text>
       </Pressable>
     </SafeAreaView>
   );

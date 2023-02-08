@@ -17,7 +17,8 @@ const SCIngredients = ({recipe}) => {
   })
 
   return (
-    <View className="my-6 mx-14">
+    <View className="my-6 mx-10">
+      <Text className="text-xl font-bold mb-4">Ingredients:</Text>
       <Text className="text-base mb-4 text-left">{recipe.garnishes}</Text>
       {ingredientItems}
     </View>
