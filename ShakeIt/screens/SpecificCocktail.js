@@ -11,27 +11,17 @@ const SpecificCocktail = ({ route, navigation }) => {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    console.log(`Fetching recipe ${recipeId}`)
-    getRecipeById(recipeId)
-      .then((recipe) => {
-        console.log(recipe);
-        setRecipe(recipe)
-      })
+    console.log(`Fetching recipe ${recipeId}`);
+    getRecipeById(recipeId).then(recipe => {
+      console.log(recipe);
+      setRecipe(recipe);
+    });
   }, [recipeId]);
 
   if (!recipe) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
 
-  // return (
-  //   <View className="flex flex-column">
-  //     {img}
-  //     <Text>SpecificCocktail recipeId={recipeId}</Text>
-  //     { Object.keys(recipe).map(key => {
-  //       return <Text key={key}>{key} = {JSON.stringify(recipe[key])}</Text>
-  //     }) }
-  //   </View>
-  // );
 
   return (
     <View className="flex">

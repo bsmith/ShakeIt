@@ -14,36 +14,65 @@ import MainContainer from "../containers/MainContainer";
 
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
+import SearchBar from "../components/SearchBar";
 
 const Welcome = () => {
   const navigation = useNavigation();
 
-  // const [value, setValue] = useState(null);
-  // useEffect(() => {
-  //   const starCountRef = ref(db, "recipe");
-  //   // const starCountRef = ref(db, "recipe" + postId + "/starCount");
-  //   onValue(starCountRef, snapshot => {
-  //     const data = snapshot.val();
+  const [value, setValue] = useState(null);
+  useEffect(() => {
+    const starCountRef = ref(db, "recipe");
+    // const starCountRef = ref(db, "recipe" + postId + "/starCount");
+    onValue(starCountRef, snapshot => {
+      const data = snapshot.val();
 
-  //     setValue(data);
-  //     console.log(`Fetched data from Firebase: ${data.description}`);
-  //   });
-  // }, []);
-  
+      setValue(data);
+    });
+  }, []);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, []);
+
   return (
-    <SafeAreaView className="bg-white pt-5">
-      <MainContainer />
+    <SafeAreaView className="flex justify-between space-y-4 items-center h-full bg-rose-100">
+      <SearchBar />
+      <View className="flex-1">
+        <Text>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </Text>
+      </View>
+      <Pressable onPress={() => navigation.navigate("Explore")}>
+        <Text className="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 rounded w-20">
+          Explore
+        </Text>
+      </Pressable>
 
-      <Pressable onPress = {() => navigation.navigate("Explore") }>
-        <Text className="mx-4">Explore</Text>
+      <Pressable onPress={() => navigation.navigate("LogIn")}>
+        <Text className="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 rounded w-20">
+          Log in
+        </Text>
       </Pressable>
 
       <Pressable
-        onPress = {() => navigation.navigate("SpecificCocktail", { recipeId: "mojito" }) }
+        onPress={() =>
+          navigation.navigate("SpecificCocktail", {
+            recipeId: "brandyalexander",
+          })
+        }
       >
-        <Text className="mx-4">Mojito</Text>
+        <Text className="mx-4">Brandy Alexander</Text>
       </Pressable>
-
     </SafeAreaView>
   );
 };
