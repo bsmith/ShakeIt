@@ -13,7 +13,7 @@ const SearchBar = () => {
       <View className="flex-row flex-1 space-x-2 bg-gray-200 p-3">
         <MagnifyingGlassIcon color="gray" size={20} />
         <TextInput
-          placeholder="Restaurants and cuisines"
+          placeholder="Cocktail name"
           keyboard="default"
         />
       </View>

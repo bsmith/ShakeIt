@@ -9,21 +9,19 @@ const CategoriesContainer = () => {
     {/*Categories*/}
     {/* <CategoryContainer /> */}
 
-    {/*Featured rows*/}
+
     <CategorySlider
       id="1"
       title="Fruity"
       description="Sweet and fruity range"
     />
 
-    {/*Tasty Discounts*/}
     <CategorySlider
       id="2"
       title="Strong"
       description="Double the strength"
     />
 
-    {/*Offers near you*/}
     <CategorySlider
       id="3"
       title="Mocktails"
