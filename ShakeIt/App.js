@@ -2,7 +2,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Explore from "./screens/Explore";
 import Welcome from "./screens/Welcome";
-import { db } from "./firebaseConfig";
 const Stack = createNativeStackNavigator();
 
 const App = () => {
