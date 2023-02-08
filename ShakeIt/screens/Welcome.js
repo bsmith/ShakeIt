@@ -42,13 +42,13 @@ const Welcome = () => {
       <MainContainer />
 
       <Pressable onPress = {() => navigation.navigate("Explore") }>
-        <Text>Explore</Text>
+        <Text className="mx-4">Explore</Text>
       </Pressable>
 
       <Pressable
         onPress = {() => navigation.navigate("SpecificCocktail", { recipeId: "brandyalexander" }) }
       >
-        <Text>Brandy Alexander</Text>
+        <Text className="mx-4">Brandy Alexander</Text>
       </Pressable>
 
     </SafeAreaView>
