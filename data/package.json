@@ -1,0 +1,13 @@
+{
+  "name": "shakeit-data",
+  "version": "1.0.0",
+  "description": "Make JSON files of cocktail data for ShakeIt",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/writeExamplesJson.js",
+    "test": "mocha tests"
+  },
+  "dependencies": {
+    "mocha": "^10.2.0"
+  }
+}
