@@ -31,25 +31,16 @@ const AppNavigator = () => {
         <Stack.Screen
           name="SpecificCategory"
           component={SpecificCategory}
-          getId={({ params }) => params.categoryId }
+          getId={({ params }) => params.categoryId}
         />
         <Stack.Screen
           name="SpecificCocktail"
           component={SpecificCocktail}
-          getId={({ params }) => params.recipeId }
+          getId={({ params }) => params.recipeId}
         />
-        <Stack.Screen
-          name="SearchInput"
-          component={SearchInput}
-        />
-        <Stack.Screen
-          name="SearchResults"
-          component={SearchResults}
-        />
-        <Stack.Screen
-          name="LeaveComment"
-          component={LeaveComment}
-        />
+        <Stack.Screen name="SearchInput" component={SearchInput} />
+        <Stack.Screen name="SearchResults" component={SearchResults} />
+        <Stack.Screen name="LeaveComment" component={LeaveComment} />
       </Stack.Navigator>
     </NavigationContainer>
   );
