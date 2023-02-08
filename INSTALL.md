@@ -1,3 +1,5 @@
+We ended up using Expo with Expo Go.  Please see the bottom of this file for running with Expo Go.
+
 # Setting up React Native
 
 ## Install a Java 11 SDK
@@ -39,7 +41,7 @@ npm install
 
 git is not initialised, so you'd need to do this yourself.
 
-# Run your program
+## Run your program
 
 To run your program:
 
@@ -50,3 +52,13 @@ npx react-native run-android
 This opens two windows: the Android Phone emulator, and a control terminal for the React Native.  This is slow the first time you do it.
 To exit: Use 'Control-C' in the control terminal, followed by Enter, followed by closing the window.
 Select the Android emulator, and use the 'Quit' menu item to exit it.
+
+# Running an expo app with Expo Go
+
+To run an expo app:
+
+```
+npx expo start --tunnel
+```
+
+Then scan the QR code with the _Expo Go_ app.  (NB. At Codeclan, make sure your laptop is using the Codeclan VISITOR wifi.)
