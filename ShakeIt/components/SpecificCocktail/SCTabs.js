@@ -8,7 +8,10 @@ const Tab = createMaterialTopTabNavigator();
 
 function SCTabs({recipe}) {
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            // style={{height: 600, backgroundColor: "powderblue"}}
+            sceneContainerStyle={{flexGrow: 1}}
+        >
             <Tab.Screen name="Ingredients"
                 children={props => <SCIngredients recipe={recipe} {...props} />} />
             <Tab.Screen name="Recipe" 
