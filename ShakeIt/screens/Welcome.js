@@ -6,13 +6,30 @@ import {
   UserIcon,
   ChevronDownIcon,
   AdjustmentsVerticalIcon,
+  AcademicCapIcon,
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
 
 import MainContainer from "../containers/MainContainer";
 
+import { db } from "../firebase";
+import { getDatabase, ref, onValue } from "firebase/database";
+
 const Welcome = () => {
     const navigation = useNavigation();
+
+  const [value, setValue] = useState(null);
+  useEffect(() => {
+    const starCountRef = ref(db, "recipe");
+    // const starCountRef = ref(db, "recipe" + postId + "/starCount");
+    onValue(starCountRef, snapshot => {
+      const data = snapshot.val();
+
+      setValue(data);
+      console.log(data);
+      console.log(data.description);
+    });
+  }, []);
 
     useLayoutEffect(() => {
       navigation.setOptions({
@@ -27,7 +44,6 @@ const Welcome = () => {
         navigation.navigate("Explore")
       }><Text className="mx-4">Explore here</Text>
       </Pressable>
-
     </SafeAreaView>
   );
 };
