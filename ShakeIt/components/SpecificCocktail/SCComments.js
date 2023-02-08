@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const SCIngredients = () => {
+const SCComments = ({recipe}) => {
   return (
     <View>
-      <Text>SCIngredients</Text>
+      <Text>SCComments {recipe.name}</Text>
     </View>
   );
 };
 
-export default SCIngredients;
+export default SCComments;
