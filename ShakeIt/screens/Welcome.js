@@ -1,8 +1,7 @@
-import { View, Text, TextInput, ScrollView } from "react-native";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import { View, Text, TextInput, ScrollView, Pressable } from "react-native";
+import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StatusBar } from "expo-status-bar";
 import {
   UserIcon,
   ChevronDownIcon,
@@ -11,10 +10,14 @@ import {
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
 
+import MainContainer from "../containers/MainContainer";
+
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 
 const Welcome = () => {
+    const navigation = useNavigation();
+
   const [value, setValue] = useState(null);
   useEffect(() => {
     const starCountRef = ref(db, "recipe");
@@ -28,14 +31,19 @@ const Welcome = () => {
     });
   }, []);
 
+    useLayoutEffect(() => {
+      navigation.setOptions({
+        headerShown: false,
+      });
+    }, []);
+  
   return (
     <SafeAreaView className="bg-white pt-5">
-      <View className="bg-red-400">
-        <ChevronDownIcon size={20} color="#00CCBB" />
-        <AcademicCapIcon size={30} color="#00CCBB" />
-        <MagnifyingGlassIcon size={50} color="#00CCBB" />
-        {/* <StatusBar style="auto" /> */}
-      </View>
+      <MainContainer />
+      <Pressable onPress = {() =>
+        navigation.navigate("Explore")
+      }><Text className="mx-4">Explore here</Text>
+      </Pressable>
     </SafeAreaView>
   );
 };
