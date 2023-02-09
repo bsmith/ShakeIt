@@ -11,9 +11,9 @@ const SpecificCocktail = ({ route, navigation }) => {
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    console.log(`Fetching recipe ${recipeId}`);
+    // console.log(`Fetching recipe ${recipeId}`);
     getRecipeById(recipeId).then(recipe => {
-      console.log(recipe);
+      // console.log(recipe);
       setRecipe(recipe);
     });
   }, [recipeId]);
@@ -21,7 +21,6 @@ const SpecificCocktail = ({ route, navigation }) => {
   if (!recipe) {
     return <Text>Loading...</Text>;
   }
-
 
   return (
     <View className="flex">
@@ -32,7 +31,7 @@ const SpecificCocktail = ({ route, navigation }) => {
         <SCTabs recipe={recipe} />
       </View>
     </View>
-  )
-}
+  );
+};
 
 export default SpecificCocktail;

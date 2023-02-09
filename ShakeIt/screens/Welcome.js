@@ -1,17 +1,14 @@
-import { View, Text, TextInput, ScrollView, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  Pressable,
+  Image,
+} from "react-native";
 import React, { useLayoutEffect, useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import {
-  UserIcon,
-  ChevronDownIcon,
-  AdjustmentsVerticalIcon,
-  AcademicCapIcon,
-  MagnifyingGlassIcon,
-} from "react-native-heroicons/outline";
-
-import MainContainer from "../containers/MainContainer";
-
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 import SearchBar from "../components/SearchBar";
@@ -37,9 +34,14 @@ const Welcome = () => {
   }, []);
 
   return (
-    <SafeAreaView className="flex justify-between space-y-4 items-center h-full bg-rose-100">
+    <SafeAreaView className="flex justify-between space-y-4 items-center h-full">
       <SearchBar />
       <View className="flex-1">
+        <Text className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white ">
+          Welcome to Shake it
+        </Text>
+        <Image source={require("./ShakeIt.png")} className="max-w-md h-auto " />
+
         <Text>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
