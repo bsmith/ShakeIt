@@ -1,5 +1,6 @@
 {
   "name": "shakeit",
+  "type": "module",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -18,6 +19,7 @@
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "firebase": "^9.17.1",
+    "mocha": "^10.2.0",
     "moment": "^2.29.4",
     "nativewind": "^2.0.11",
     "react": "18.1.0",

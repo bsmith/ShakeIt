@@ -20,12 +20,16 @@ const SearchForm = ({onSubmit}) => {
   // console.log(Object.keys(colors))
 
   const handleSearchPress = useCallback(() => {
+    /* Trim/reformat search terms */
+    const trimmedSearch = searchTerm.trim();
+    setSearchTerm(trimmedSearch);
+
     /* Skip if searchTerm is blank */
-    if (searchTerm.length === 0)
+    if (trimmedSearch.length === 0)
       return;
 
     Keyboard.dismiss();
-    console.log(`Searching search for '${searchTerm}'`)
+    console.log(`Searching search for '${trimmedSearch}'`)
     setSearchStarted(true);
 
     setTimeout(() => {
