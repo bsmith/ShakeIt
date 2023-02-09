@@ -3,13 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
 import CategorySlider from "../components/Explore/CategorySlider";
 import { getAllCategories } from "../services/CategoriesService";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
-import resolveConfig from 'tailwindcss/resolveConfig'
+import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../tailwind.config";
-import { useNavigation } from "@react-navigation/native";
 // import ButtonsFooter from "../components/ButtonsFooter";
 
 // import { Colors, Header } from "react-native/Libraries/NewAppScreen";
@@ -51,29 +49,28 @@ const Explore = () => {
         </View>
         <CategorySlider categoryId={index} category={category}></CategorySlider>
       </View>
-      
-      );
-    });
-    const fullConfig = resolveConfig(tailwindConfig);
-    const colors = fullConfig.theme.colors;
+    );
+  });
+  const fullConfig = resolveConfig(tailwindConfig);
+  const colors = fullConfig.theme.colors;
 
   return (
     <View>
       {/* <Header /> */}
-        <View>
-          <ScrollView
-            contentContainerStyle={{
-              paddingHorizontal: 15,
-              paddingTop: 10, 
-              // backgroundColor: colors.beach[300]
-            }}
-            showsHorizontalScrollIndicator={false}
-            className="pt-4  bg-beach-200 dark:bg-beach-900 dark:text-white-50"
-          >
-            {categoryItems}
-          </ScrollView>
-          <ButtonsFooter />
-        </View>
+      <View>
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: 15,
+            paddingTop: 10,
+            // backgroundColor: colors.beach[300]
+          }}
+          showsHorizontalScrollIndicator={false}
+          className="pt-4  bg-beach-200 dark:bg-beach-900 dark:text-white-50"
+        >
+          {categoryItems}
+        </ScrollView>
+        {/* <ButtonsFooter /> */}
+      </View>
     </View>
   );
 };
