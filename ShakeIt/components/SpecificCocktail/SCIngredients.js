@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const SCIngredients = ({recipe}) => {
+const SCIngredients = ({ recipe }) => {
   const ingredientItems = recipe.ingredients.map((ingredient, index) => {
     const colour1 = "green-500";
     const colour2 = "green-300";
@@ -13,8 +13,8 @@ const SCIngredients = ({recipe}) => {
         <Text className="text-base grow">{ingredient.name}</Text>
         <Text className="text-base">{ingredient.quantity} {ingredient.quantityUnit}</Text>
       </View>
-    )
-  })
+    );
+  });
 
   return (
     <View className="my-6 mx-10">

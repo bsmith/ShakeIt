@@ -5,20 +5,14 @@ import {
   AdjustmentsVerticalIcon,
 } from "react-native-heroicons/outline";
 
-
-
 const SearchBar = () => {
   return (
-    <View className="flex-row items-center space-x-2 pb-2 mx-4">
-      <View className="flex-row flex-1 space-x-2 bg-gray-200 p-3">
+    <View className="flex-row items-center space-x-2 p-3 mx-3">
+      <View className="flex-row flex-1 space-x-2 bg-gray-200 p-3 rounded">
         <MagnifyingGlassIcon color="gray" size={20} />
-        <TextInput
-          placeholder="Cocktail name"
-          keyboard="default"
-        />
+        <TextInput placeholder="Search on ShakeIt" keyboard="default" />
       </View>
-
-  </View>
+    </View>
   );
 };
 
