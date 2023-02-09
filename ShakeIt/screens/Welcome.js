@@ -11,7 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
-import SearchBar from "../components/SearchBar";
+import Header from "../components/Header";
 
 const Welcome = () => {
   const navigation = useNavigation();
@@ -35,7 +35,7 @@ const Welcome = () => {
 
   return (
     <SafeAreaView className="flex justify-between space-y-4 items-center h-full">
-      <SearchBar />
+      <Header />
       <View className="flex-1">
         <Text className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white ">
           Welcome to Shake it

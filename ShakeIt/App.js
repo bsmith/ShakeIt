@@ -7,6 +7,7 @@ import SpecificCocktail from "./screens/SpecificCocktail";
 import SearchInput from "./screens/SearchInput";
 import SearchResults from "./screens/SearchResults";
 import LeaveComment from "./screens/LeaveComment";
+import Header from "./components/Header";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,24 +20,26 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="Welcome"
           component={Welcome}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
           name="Explore"
           component={Explore}
+          options={{ headerTitle: (props) => <Header {...props} /> }}
         />
         <Stack.Screen
           name="SpecificCategory"
           component={SpecificCategory}
           getId={({ params }) => params.categoryId}
+          options={{ headerTitle: (props) => <Header {...props} /> }}
         />
         <Stack.Screen
           name="SpecificCocktail"
           component={SpecificCocktail}
           getId={({ params }) => params.recipeId}
+          options={{ headerTitle: (props) => <Header {...props} /> }}
         />
         <Stack.Screen name="SearchInput" component={SearchInput} />
         <Stack.Screen name="SearchResults" component={SearchResults} />

@@ -20,7 +20,7 @@ const SpecificCocktail = ({ route, navigation }) => {
         });
     }, [recipeId]);
     
-    const Header = () => {
+    const HeaderX = () => {
         return <View>
             <CocktailDescription recipe={recipe} />
         </View>
@@ -32,7 +32,7 @@ const SpecificCocktail = ({ route, navigation }) => {
     
     return (
         <Tabs.Container
-            renderHeader={Header}
+            renderHeader={HeaderX}
         >
             <Tabs.Tab name="Recipe" key="recipe">
                 <Tabs.ScrollView>
