@@ -38,8 +38,9 @@ SearchService.prototype.setIndexFromCategories = function (categoriesData) {
 }
 
 SearchService.prototype.searchByName = function (searchTerm) {
+    const lowerSearchTerm = searchTerm.toLowerCase();
     return this.recipeIndex.filter(recipe => {
-        return recipe.name.indexOf(searchTerm) !== -1;
+        return recipe.name.toLowerCase().indexOf(lowerSearchTerm) !== -1;
     })
 };
 

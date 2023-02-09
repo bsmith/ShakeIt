@@ -57,4 +57,31 @@ describe('SearchService', () => {
     });
 
     /* test searching */
+    it('can find cocktail by prefix of name', () => {
+        searchService.setIndexFromCategories(categoriesData);
+        const result = searchService.searchByName('Mud');
+        assert.strictEqual(result.length, 1);
+        assert.strictEqual(result[0].name, 'Mudslide');
+    });
+
+    it('can find cocktail case-insensitively by name', () => {
+        searchService.setIndexFromCategories(categoriesData);
+        const result = searchService.searchByName('mud');
+        assert.strictEqual(result.length, 1);
+        assert.strictEqual(result[0].name, 'Mudslide');
+    });
+
+    it('can find cocktail by part of word in name', () => {
+        searchService.setIndexFromCategories(categoriesData);
+        const result = searchService.searchByName('slide');
+        assert.strictEqual(result.length, 1);
+        assert.strictEqual(result[0].name, 'Mudslide');
+    });
+
+    it('can find cocktail by second word in name', () => {
+        searchService.setIndexFromCategories(categoriesData);
+        const result = searchService.searchByName('Alexander');
+        assert.strictEqual(result.length, 1);
+        assert.strictEqual(result[0].name, 'Brandy Alexander');
+    });
 });
