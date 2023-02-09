@@ -18,7 +18,12 @@ const App = () => {
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="Welcome"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#f4511e',
+        },
+      }}>
         <Stack.Screen
           options={{ headerShown: true }}
           name="Welcome"
