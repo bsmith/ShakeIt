@@ -19,10 +19,18 @@ SearchService.prototype.getRecipeIndex = function () {
 }
 
 SearchService.prototype.extractIndexFromCategories = function (categoriesData) {
-    const recipes = Object.values(categoriesData)
-        .flatMap(category => Object.values(category.members));
-    /* the category members are already in the correct format */
-    return recipes;
+    /* Insert recipes into a map by id to deduplicate them */
+
+    const recipesById = new Map();
+    for (const category of Object.values(categoriesData)) {
+        for (const recipeId of Object.keys(category.members)) {
+            const recipe = {...category.members[recipeId]};
+            recipe.id = recipeId; /* add id if missing */
+            recipesById.set(recipeId, recipe);
+        }
+    }
+
+    return [...recipesById.values()];
 }
 
 SearchService.prototype.setIndexFromCategories = function (categoriesData) {
