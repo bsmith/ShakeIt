@@ -1,10 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
+import SearchForm from "../components/Search/SearchForm";
+
 const SearchInput = () => {
   return (
     <View>
-      <Text>SearchInput</Text>
+      <SearchForm />
     </View>
   );
 };

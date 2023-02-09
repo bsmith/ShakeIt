@@ -54,6 +54,7 @@ const Welcome = () => {
           including versions of Lorem Ipsum.
         </Text>
       </View>
+
       <Pressable onPress={() => navigation.navigate("Explore")}>
         <Text className="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 rounded w-20">
           Explore
@@ -63,6 +64,12 @@ const Welcome = () => {
       <Pressable onPress={() => navigation.navigate("LogIn")}>
         <Text className="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 rounded w-20">
           Log in
+        </Text>
+      </Pressable>
+
+      <Pressable onPress={() => navigation.navigate("SearchInput")}>
+        <Text className="bg-blue-500 hover:bg-blue-700 text-center text-white font-bold py-2 rounded w-20">
+          SearchInput
         </Text>
       </Pressable>
 

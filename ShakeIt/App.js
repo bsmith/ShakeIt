@@ -38,7 +38,13 @@ const AppNavigator = () => {
           component={SpecificCocktail}
           getId={({ params }) => params.recipeId}
         />
-        <Stack.Screen name="SearchInput" component={SearchInput} />
+        <Stack.Screen
+          name="SearchInput"
+          component={SearchInput}
+          options={{
+            title: "Search on ShakeIt",
+          }}
+        />
         <Stack.Screen name="SearchResults" component={SearchResults} />
         <Stack.Screen name="LeaveComment" component={LeaveComment} />
       </Stack.Navigator>

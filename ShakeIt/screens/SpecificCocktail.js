@@ -13,9 +13,9 @@ const SpecificCocktail = ({ route, navigation }) => {
     const [recipe, setRecipe] = useState(null);
     
     useEffect(() => {
-        console.log(`Fetching recipe ${recipeId}`);
+        // console.log(`Fetching recipe ${recipeId}`);
         getRecipeById(recipeId).then(recipe => {
-            console.log(recipe);
+            // console.log(recipe);
             setRecipe(recipe);
         });
     }, [recipeId]);

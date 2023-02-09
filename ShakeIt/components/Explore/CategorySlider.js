@@ -21,7 +21,7 @@ const CategorySlider = ({ category }) => {
   // }, []);
 
   const cocktails = Object.values(category.members);
-  console.log(cocktails);
+  // console.log(cocktails);
   const cocktailItems = cocktails.map((cocktail, index) => {
     return (
       <View className="flex" key={index}>
