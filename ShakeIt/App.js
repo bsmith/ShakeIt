@@ -8,8 +8,14 @@ import SearchInput from "./screens/SearchInput";
 import SearchResults from "./screens/SearchResults";
 import LeaveComment from "./screens/LeaveComment";
 import Header from "./components/Header";
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from "./tailwind.config";
+
 
 const Stack = createNativeStackNavigator();
+const fullConfig = resolveConfig(tailwindConfig);
+const colors = fullConfig.theme.colors;
+
 
 const App = () => {
   return <AppNavigator />;
@@ -21,9 +27,13 @@ const AppNavigator = () => {
       <Stack.Navigator initialRouteName="Welcome"
       screenOptions={{
         headerStyle: {
-          backgroundColor: '#f4511e',
+          backgroundColor: colors.beach[300],
         },
-      }}>
+        // contentContainerStyle: {
+        //   backgroundColor: colors.beach[800],
+        // }
+      }}
+      >
         <Stack.Screen
           options={{ headerShown: true }}
           name="Welcome"
