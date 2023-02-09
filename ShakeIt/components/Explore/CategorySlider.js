@@ -8,15 +8,24 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { ArrowRightIcon, StarIcon } from "react-native-heroicons/solid";
+import { useNavigation } from "@react-navigation/native";
 
 /* inside your component */
 
-const CategorySlider = ({ category }) => {
+const CategorySlider = ({ categoryId, category }) => {
+  const navigation = useNavigation();
   const cocktails = Object.values(category.members);
   const cocktailItems = cocktails.map((cocktail, index) => {
     return (
       <View className="flex" key={index}>
-        <TouchableOpacity className="bg-white mr-3 shadow">
+        <TouchableOpacity
+          className="bg-white mr-3 shadow"
+          onPress={() =>
+            navigation.navigate("SpecificCocktail", {
+              recipeId: cocktail.id,
+            })
+          }
+        >
           <Image
             source={{
               uri: cocktail.imgUrl,
@@ -52,19 +61,20 @@ const CategorySlider = ({ category }) => {
       >
         {cocktailItems}
         <View className="flex align-middle">
-          <View className=" align-middle w-auto h-10 bg-white items-center content-center rounded-full">
-            <ArrowRightIcon color="#16bdca" size={30} />
-            <Pressable
-              onPress={() =>
-                navigation.navigate("SpecificCategory", {
-                  categoryId: index,
-                  categoryData: category,
-                })
-              }
-            >
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("SpecificCategory", {
+                categoryId: categoryId,
+                categoryData: category,
+              })
+            }
+          >
+            <View className=" align-middle w-auto h-10 bg-white items-center content-center rounded-full">
+              <ArrowRightIcon color="#16bdca" size={30} />
+
               <Text className="text-xs mb-1 text-gray-500 px-4">View all</Text>
-            </Pressable>
-          </View>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>

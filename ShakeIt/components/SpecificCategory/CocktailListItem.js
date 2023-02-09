@@ -1,4 +1,4 @@
-import { View, Text, Image, Pressable } from "react-native";
+import { View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
@@ -6,14 +6,15 @@ const CocktailListItem = ({ cocktail }) => {
   const navigation = useNavigation();
 
   return (
-    <Pressable
+    <TouchableOpacity
+      className="bg-white mr-3 shadow"
       onPress={() =>
         navigation.navigate("SpecificCocktail", {
           recipeId: cocktail.id,
         })
       }
     >
-      <View className="flex-row my-2 h-40">
+      <View className="flex-row my-2 h-40 bg-white">
         <Image
           source={{
             uri: cocktail.imgUrl,
@@ -27,7 +28,7 @@ const CocktailListItem = ({ cocktail }) => {
           <Text className="text-lg">{cocktail.shortDescription}</Text>
         </View>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

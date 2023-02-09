@@ -18,7 +18,6 @@ const Explore = () => {
 
   const categoryItems = Object.keys(categoriesData).map(index => {
     const category = categoriesData[index];
-
     return (
       <View key={index}>
         <View className="bg-gray-200 mt-2 flex-row justify-between px-4">
@@ -41,7 +40,7 @@ const Explore = () => {
             </Text>
           </Pressable>
         </View>
-        <CategorySlider category={category}></CategorySlider>
+        <CategorySlider categoryId={index} category={category}></CategorySlider>
       </View>
     );
   });
@@ -60,8 +59,8 @@ const Explore = () => {
           {/* <MainContainer> */}
           {categoryItems}
           {/* </MainContainer> */}
+          <ButtonsFooter />
         </ScrollView>
-        <ButtonsFooter />
       </View>
     </>
   );
