@@ -20,7 +20,7 @@ const Explore = () => {
     const category = categoriesData[index];
 
     return (
-      <View key={index}>
+      <View key={index} className="mb-8">
         <View className="bg-gray-200 mt-2 flex-row justify-between px-4">
           <View className=" flex items-center justify-between ">
             <Text className="font-bold text-lg">{index}</Text>
@@ -48,7 +48,8 @@ const Explore = () => {
 
   return (
     <>
-      <View>
+      {/* <View style={{flex: 1}}> */}
+      <View className="flex-1">
         <ScrollView
           contentContainerStyle={{
             paddingHorizontal: 15,
@@ -61,7 +62,9 @@ const Explore = () => {
           {categoryItems}
           {/* </MainContainer> */}
         </ScrollView>
-        <ButtonsFooter />
+        <View className="bg-white">
+          <ButtonsFooter />
+        </View>
       </View>
     </>
   );
