@@ -1,18 +1,14 @@
 import {
   View,
   Text,
-  TextInput,
   ScrollView,
   Pressable,
   Image,
 } from "react-native";
-import React, { useLayoutEffect, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
-import Header from "../components/Header";
-
 
 const Welcome = () => {
   const navigation = useNavigation();
@@ -28,15 +24,8 @@ const Welcome = () => {
     });
   }, []);
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
-
   return (
     <ScrollView className="flex space-y-4 h-full">
-      <Header />
       <View className="flex-1">
         <Text className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white ">
           Welcome to Shake it
@@ -55,6 +44,7 @@ const Welcome = () => {
           including versions of Lorem Ipsum.
         </Text>
       </View>
+
       <Pressable onPress={() => navigation.navigate("Explore")}>
         <Text className="bg-beach-400 hover:bg-beach-700 text-center text-white font-bold py-2 rounded w-20">
           Explore
@@ -66,17 +56,7 @@ const Welcome = () => {
           Log in
         </Text>
       </Pressable>
-
-        <Pressable
-          onPress={() =>
-            navigation.navigate("SpecificCocktail", {
-              recipeId: "whiterussian",
-            })
-          }
-        >
-          <Text className="mx-4">White Russian</Text>
-        </Pressable>
-      </ScrollView>
+    </ScrollView>
   );
 };
 export default Welcome;
