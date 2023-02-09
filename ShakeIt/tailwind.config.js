@@ -52,6 +52,8 @@ module.exports = {
         },
       },
     },
+  },
+  colors: {},
   plugins: [],
 };
 

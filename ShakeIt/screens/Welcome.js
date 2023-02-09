@@ -35,7 +35,7 @@ const Welcome = () => {
   }, []);
 
   return (
-    <SafeAreaView className="flex justify-between space-y-4 items-center h-full">
+    <ScrollView className="flex space-y-4 h-full">
       <Header />
       <View className="flex-1">
         <Text className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white ">
@@ -66,19 +66,17 @@ const Welcome = () => {
           Log in
         </Text>
       </Pressable>
-      
 
-
-      <Pressable
-        onPress={() =>
-          navigation.navigate("SpecificCocktail", {
-            recipeId: "whiterussian",
-          })
-        }
-      >
-        <Text className="mx-4">White Russian</Text>
-      </Pressable>
-    </SafeAreaView>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("SpecificCocktail", {
+              recipeId: "whiterussian",
+            })
+          }
+        >
+          <Text className="mx-4">White Russian</Text>
+        </Pressable>
+      </ScrollView>
   );
 };
 export default Welcome;

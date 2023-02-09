@@ -1,31 +1,31 @@
-import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  Pressable,
+} from "react-native";
 import React, { useEffect, useState } from "react";
-import { getAllCategories } from "../../services/CategoriesService";
 import { ArrowRightIcon, StarIcon } from "react-native-heroicons/solid";
-import MainContainer from "../MainContainer";
-import { SearchBar } from "react-native-screens";
-import ButtonsFooter from "../ButtonsFooter";
+import { useNavigation } from "@react-navigation/native";
 
 /* inside your component */
 
-const CategorySlider = ({ category }) => {
-  // const [categoriesData, setCategoriesData] = useState({});
-
-  // useEffect(() => {
-  //   // console.log(`Fetching all categories`);
-  //   getAllCategories().then(categoriesData => {
-  //     setCategoriesData(categoriesData);
-  //     console.log(categoriesData);
-  //     // console.log(`Got all categories!`);
-  //   });
-  // }, []);
-
+const CategorySlider = ({ categoryId, category }) => {
+  const navigation = useNavigation();
   const cocktails = Object.values(category.members);
-  console.log(cocktails);
   const cocktailItems = cocktails.map((cocktail, index) => {
     return (
       <View className="flex" key={index}>
-        <TouchableOpacity className="bg-white mr-3 shadow">
+        <TouchableOpacity
+          className="bg-white mr-3 shadow"
+          onPress={() =>
+            navigation.navigate("SpecificCocktail", {
+              recipeId: cocktail.id,
+            })
+          }
+        >
           <Image
             source={{
               uri: cocktail.imgUrl,
@@ -57,24 +57,27 @@ const CategorySlider = ({ category }) => {
           paddingTop: 10,
         }}
         showsHorizontalScrollIndicator={false}
-        className="pt-4"
+        className="p-1"
       >
         {cocktailItems}
-        <View className="items-center content-center">
-          <View className="w-auto h-10 bg-white items-center content-center rounded-full">
-            <ArrowRightIcon color="#00CCBB" size={30} />
-          </View>
-          <Text className="text-xs mb-1 text-gray-500 px-4">View all</Text>
+        <View className="flex align-middle">
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("SpecificCategory", {
+                categoryId: categoryId,
+                categoryData: category,
+              })
+            }
+          >
+            <View className=" align-middle w-auto h-10 bg-white items-center content-center rounded-full">
+              <ArrowRightIcon color="#16bdca" size={30} />
+
+              <Text className="text-xs mb-1 text-gray-500 px-4">View all</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
-
-    // <View>
-    //   <Pressable onPress={() => navigation.navigate("SpecificCategory")}>
-
-    //     <Text className="mx-4">Fruity Category</Text>
-    //   </Pressable>
-    // </View>
   );
 };
 
