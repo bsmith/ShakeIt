@@ -18,6 +18,10 @@ SearchService.prototype.getRecipeIndex = function () {
     return this.recipeIndex;
 }
 
+SearchService.prototype.hasRecipeIndex = function () {
+    return this.recipeIndex.length > 0;
+}
+
 SearchService.prototype.extractIndexFromCategories = function (categoriesData) {
     /* Insert recipes into a map by id to deduplicate them */
 

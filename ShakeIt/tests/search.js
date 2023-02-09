@@ -27,6 +27,15 @@ describe('SearchService', () => {
         searchService = new SearchService();
     });
 
+    it('initially doesn\'t have an index', () => {
+        assert.strictEqual(searchService.hasRecipeIndex(), false);
+    });
+
+    it('has an index after loading short data', () => {
+        searchService.setIndexFromCategories(shortCategoriesData);
+        assert.strictEqual(searchService.hasRecipeIndex(), true);
+    });
+
     it('can extract index from short categories data', () => {
         const index = searchService.extractIndexFromCategories(shortCategoriesData);
         assert.deepStrictEqual(index, shortIndex);
