@@ -1,5 +1,9 @@
 import { View, Text, TextInput, Button, Pressable, Keyboard, ActivityIndicator } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React, { useState, useCallback } from "react";
+
+import SearchService from '../../services/SearchService';
+import { getAllCategories } from '../../services/CategoriesService';
 
 // import colors from "tailwindcss/colors";
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -12,7 +16,17 @@ import {
   AdjustmentsVerticalIcon,
 } from "react-native-heroicons/outline";
 
+/* NB. no caching of data or remote searching */
+const performSearchAsync = async (searchTerm) => {
+  const categoriesData = await getAllCategories();
+  const searchService = new SearchService();
+  searchService.setIndexFromCategories(categoriesData);
+  const results = searchService.searchByName(searchTerm);
+  return results;
+}
+
 const SearchForm = ({onSubmit}) => {
+  const navigation = useNavigation();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchStarted, setSearchStarted] = useState(false);
@@ -32,10 +46,18 @@ const SearchForm = ({onSubmit}) => {
     console.log(`Searching search for '${trimmedSearch}'`)
     setSearchStarted(true);
 
-    setTimeout(() => {
-      console.log(`Got search results back`)
-      setSearchStarted(false);
-    }, 5000)
+    // setTimeout(() => {
+    //   console.log(`Got search results back`)
+    //   setSearchStarted(false);
+    // }, 5000)
+
+    performSearchAsync(trimmedSearch)
+      .then((results) => {
+        setSearchStarted(false);
+        console.log(`Got results:`, results);
+
+        navigation.navigate('SearchResults', { results });
+      })
   });
 
   return (
