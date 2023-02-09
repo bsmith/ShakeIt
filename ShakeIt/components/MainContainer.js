@@ -1,6 +1,6 @@
-import SearchBar from "../components/SearchBar";
+import SearchBar from "./SearchBar";
 import { View, Text, StyleSheet } from "react-native";
-import ButtonsFooter from "../components/ButtonsFooter";
+import ButtonsFooter from "./ButtonsFooter";
 import { UserIcon } from "react-native-heroicons/outline";
 
 const MainContainer = props => {
