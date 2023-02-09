@@ -1,17 +1,14 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
-import { SearchBar } from "react-native-screens";
-import { useNavigation } from "@react-navigation/native";
-import MainContainer from "../components/MainContainer";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ScrollView } from "react-native";
+
 import CategorySlider from "../components/Explore/CategorySlider";
 import { getAllCategories } from "../services/CategoriesService";
-import { ArrowRightIcon } from "react-native-heroicons/outline";
 import ButtonsFooter from "../components/ButtonsFooter";
+import { useNavigation } from "@react-navigation/native";
 
 const Explore = () => {
   const [categoriesData, setCategoriesData] = useState({});
+  const navigation = useNavigation();
 
   useEffect(() => {
     getAllCategories().then(categoriesData => {
@@ -31,7 +28,18 @@ const Explore = () => {
               {category.name}
             </Text>
           </View>
-          <ArrowRightIcon color="#00CCBB" size={30} />
+          <Pressable
+            onPress={() =>
+              navigation.navigate("SpecificCategory", {
+                categoryId: index,
+                categoryData: category,
+              })
+            }
+          >
+            <Text className="bg-cerise-400 text-center text-white font-bold py-2 rounded-full w-20">
+              See all
+            </Text>
+          </Pressable>
         </View>
         <CategorySlider category={category}></CategorySlider>
       </View>
@@ -39,9 +47,8 @@ const Explore = () => {
   });
 
   return (
-    <SafeAreaView>
-      <SearchBar />
-      <View className="max-h-fit">
+    <>
+      <View>
         <ScrollView
           contentContainerStyle={{
             paddingHorizontal: 15,
@@ -54,9 +61,9 @@ const Explore = () => {
           {categoryItems}
           {/* </MainContainer> */}
         </ScrollView>
+        <ButtonsFooter />
       </View>
-      <ButtonsFooter />
-    </SafeAreaView>
+    </>
   );
 };
 
