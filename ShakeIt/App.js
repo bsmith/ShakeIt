@@ -19,12 +19,12 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="Welcome"
           component={Welcome}
         />
         <Stack.Screen
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
           name="Explore"
           component={Explore}
         />
