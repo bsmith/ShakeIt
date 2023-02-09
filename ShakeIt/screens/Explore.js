@@ -2,15 +2,11 @@ import { View, Text, Pressable, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import { SafeAreaView } from "react-native-safe-area-context";
 import CategorySlider from "../components/Explore/CategorySlider";
 import { getAllCategories } from "../services/CategoriesService";
-import { ArrowRightIcon } from "react-native-heroicons/outline";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../tailwind.config";
-// import ButtonsFooter from "../components/ButtonsFooter";
-
-// import { Colors, Header } from "react-native/Libraries/NewAppScreen";
+import ButtonsFooter from "../components/ButtonsFooter";
 
 const Explore = () => {
   const [categoriesData, setCategoriesData] = useState({});
@@ -26,7 +22,7 @@ const Explore = () => {
     const category = categoriesData[index];
 
     return (
-      <View key={index}>
+      <View key={index} className="mb-8">
         <View className="bg-gray-200 mt-2 flex-row justify-between px-4">
           <View className=" flex items-center justify-between ">
             <Text className="font-bold text-lg">{index}</Text>
@@ -55,9 +51,8 @@ const Explore = () => {
   const colors = fullConfig.theme.colors;
 
   return (
-    <View>
-      {/* <Header /> */}
-      <View>
+    <>
+      <View className="flex-1">
         <ScrollView
           contentContainerStyle={{
             paddingHorizontal: 15,
@@ -69,9 +64,11 @@ const Explore = () => {
         >
           {categoryItems}
         </ScrollView>
-        {/* <ButtonsFooter /> */}
+        <View className="bg-white">
+          <ButtonsFooter />
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
