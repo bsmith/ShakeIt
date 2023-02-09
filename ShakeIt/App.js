@@ -58,6 +58,9 @@ const AppNavigator = () => {
         <Stack.Screen
           name="SearchInput"
           component={SearchInput}
+          options={{
+            title: "Search on ShakeIt",
+          }}
         />
         <Stack.Screen
           name="SearchResults"
