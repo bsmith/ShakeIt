@@ -25,38 +25,40 @@ const Welcome = () => {
   }, []);
 
   return (
-    <ScrollView className="flex space-y-4 h-full">
+    <View className="flex space-y-4 h-full bg-beach-200">
       <View className="flex-1">
-        <Text className="mb-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white ">
-          Welcome to Shake it
-        </Text>
-        <Image source={require("./ShakeIt.png")} className="max-w-md h-auto " />
+        <Image source={require("./ShakeIt.png")} className="max-w-md h-auto mx-auto mt-4" />
 
-        <Text>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+        <Text className="my-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
+          Welcome
         </Text>
+
+        <Text className="text-xl mx-7 dark:text-cerise-200 ">
+          If you're looking for some cocktail ideas you're in the right place!
+          If you're looking for some cocktail ideas you're in the right place!
+          If you're looking for some cocktail ideas you're in the right place!
+        </Text>
+
+        <Pressable
+          className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          onPress={() => navigation.navigate("Explore")}
+        >
+          <Text className="text-center text-white font-bold py-2 rounded text-lg">
+            Explore
+          </Text>
+        </Pressable>
+
+        <Pressable
+          className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          onPress={() => navigation.navigate("LogIn")}
+        >
+          <Text className="text-center text-white font-bold py-2 rounded text-lg">
+            Log in
+          </Text>
+        </Pressable>
+
       </View>
-
-      <Pressable onPress={() => navigation.navigate("Explore")}>
-        <Text className="bg-beach-400 hover:bg-beach-700 text-center text-white font-bold py-2 rounded w-20">
-          Explore
-        </Text>
-      </Pressable>
-
-      <Pressable onPress={() => navigation.navigate("LogIn")}>
-        <Text className="bg-beach-400 hover:bg-beach-700 text-center text-white font-bold py-2 rounded w-20">
-          Log in
-        </Text>
-      </Pressable>
-    </ScrollView>
+    </View>
   );
 };
 export default Welcome;

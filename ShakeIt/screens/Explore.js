@@ -23,12 +23,9 @@ const Explore = () => {
 
     return (
       <View key={index} className="mb-8">
-        <View className="bg-gray-200 mt-2 flex-row justify-between px-4">
+        <View className="bg-gray-200 dark:bg-gray-900 pt-2 flex-row justify-between px-4 rounded-2xl">
           <View className=" flex items-center justify-between ">
-            <Text className="font-bold text-lg">{index}</Text>
-            <Text className="text-xs mb-1 text-gray-700 dark:text-white-50 px-4">
-              {category.name}
-            </Text>
+            <Text className="font-bold text-lg dark:text-white-50 ">{category.name}</Text>
           </View>
           <Pressable
             onPress={() =>
@@ -37,8 +34,9 @@ const Explore = () => {
                 categoryData: category,
               })
             }
+            className="pb-2"
           >
-            <Text className="bg-cerise-400 text-center text-white font-bold py-2 rounded-full w-20">
+            <Text className="bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
               See all
             </Text>
           </Pressable>
