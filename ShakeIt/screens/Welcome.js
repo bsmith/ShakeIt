@@ -50,6 +50,15 @@ const Welcome = () => {
 
         <Pressable
           className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          onPress={() => navigation.navigate("SearchInput")}
+        >
+          <Text className="text-center text-white font-bold py-2 rounded text-lg">
+            Search
+          </Text>
+        </Pressable>
+
+        <Pressable
+          className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
           onPress={() => navigation.navigate("LogIn")}
         >
           <Text className="text-center text-white font-bold py-2 rounded text-lg">

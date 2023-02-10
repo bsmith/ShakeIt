@@ -5,7 +5,7 @@ import SearchForm from "../components/Search/SearchForm";
 
 const SearchInput = () => {
   return (
-    <View>
+    <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
       <SearchForm />
     </View>
   );
