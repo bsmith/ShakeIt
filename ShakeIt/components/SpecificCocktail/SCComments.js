@@ -12,17 +12,17 @@ const Comment = ({comment}) => {
   // date: "8 Feb '23",
   const formattedDate = moment(comment.date).format('D MMM \'YY');
   return (
-    <View className="mt-6 mx-14 bg-green-300 px-4 py-4">
-      <Text className="text-base mb-4 text-left font-bold">{comment.userNickname}</Text>
-      <Text className="text-base text-left">{comment.commentText}</Text>
-      <Text className="text-base text-right italic">{formattedDate}</Text>
+    <View className="mt-6 mx-14 bg-white-50 px-4 py-4 dark:bg-gray-600">
+      <Text className="text-base mb-4 text-left font-bold dark:text-white-50">{comment.userNickname}</Text>
+      <Text className="text-base text-left dark:text-white-50">{comment.commentText}</Text>
+      <Text className="text-base text-right italic dark:text-white-50">{formattedDate}</Text>
     </View>
   )
 }
 
 const SCComments = ({recipe}) => {
   return (
-    <View>
+    <View className="">
       <Comment comment={exampleComment} />
       <Comment comment={exampleComment} />
       <Comment comment={exampleComment} />

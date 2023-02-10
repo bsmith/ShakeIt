@@ -89,7 +89,7 @@ const SearchForm = () => {
         <Text className="text-lg">{message}</Text>
 
         <Pressable
-          className="bg-cerise-700 h-12 w-24 flex items-center justify-center"
+          className="bg-cerise-400 h-12 w-24 flex items-center justify-center rounded-full active:bg-cerise-600 hover:bg-cerise-600 dark:bg-cerise-600 "
           onPress={handleSearchPress}
         >
           <Text className="text-white text-lg">Search</Text>

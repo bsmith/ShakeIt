@@ -7,7 +7,7 @@ const SearchResults = ({route, navigation}) => {
   const { results } = route.params;
 
   return (
-    <View>
+    <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
       <CocktailList cocktails={results} />
     </View>
   );

@@ -12,29 +12,8 @@ const Header = () => {
   
   return (
     // <View className="flex flex-row space-x-5 ">
-    <View className="flex flex-row justify-between bg-white-50">
-
-      <Pressable
-        className="items-center justify-center w-12 h-12"
-        onPress={() => navigation.navigate("Welcome")}
-      >
-        <HomeIcon size={20} color="#000000" />
-      </Pressable>
-
-      <Pressable
-        className="items-center justify-center w-12 h-12"
-        onPress={() => navigation.navigate("SearchInput")}
-      >
-        <MagnifyingGlassIcon size={20} color="#000000" />
-      </Pressable>
-
-      <Pressable
-        className="items-center justify-center w-12 h-12"
-        onPress={() => navigation.navigate("LogIn")}
-      >
-        <UserIcon size={20} color="#000000" />
-      </Pressable>
-
+    // <View className="flex flex-row justify-end justify-items-end bg-white-50 w-4/5 ml-10">
+    <View className="">
       <Pressable
         className="items-center justify-center w-12 h-12"
         onPress={toggleColorScheme}

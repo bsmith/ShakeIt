@@ -17,8 +17,10 @@ const CocktailDescription = ({ recipe }) => {
   );
 
   return (
-    <View className="py-6 px-6 mx-auto max-w-md">
-      <Text className="text-2xl text-center">{recipe.name}</Text>
+    <View className="py-6 px-6 mx-auto max-w-md ">
+      <Text className="my-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
+        {recipe.name}
+      </Text>
       {img}
       <Text className="text-lg text-center mb-8">
         {recipe.shortDescription}

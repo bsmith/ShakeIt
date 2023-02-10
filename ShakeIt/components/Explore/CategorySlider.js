@@ -19,7 +19,7 @@ const CategorySlider = ({ categoryId, category }) => {
     return (
       <View className="flex" key={index}>
         <TouchableOpacity
-          className="bg-white mr-3 shadow"
+          className="bg-white-50 dark:bg-gray-600 mr-3 rounded-2xl"
           onPress={() =>
             navigation.navigate("SpecificCocktail", {
               recipeId: cocktail.id,
@@ -30,15 +30,15 @@ const CategorySlider = ({ categoryId, category }) => {
             source={{
               uri: cocktail.imgUrl,
             }}
-            className="h-36 w-64 rounded-sm"
+            className="h-36 w-64 rounded-t-2xl"
           />
           {/* <Text>{cocktail.name}</Text> */}
 
           <View className="px-3 pb-4">
-            <Text className="font-bold text-lg pt-2">{cocktail.name}</Text>
+            <Text className="font-bold text-lg pt-2 dark:text-white-50">{cocktail.name}</Text>
             <View className="flex-row items-center space-x-1">
               <StarIcon color="green" opacity={0.5} size={22} />
-              <Text className="text-xs text-gray-500">
+              <Text className="text-xs text-gray-500 dark:text-white-50">
                 <Text className="text-green-500">3</Text> · Tag
               </Text>
             </View>
@@ -53,7 +53,7 @@ const CategorySlider = ({ categoryId, category }) => {
       <ScrollView
         horizontal
         contentContainerStyle={{
-          paddingHorizontal: 15,
+          paddingHorizontal: 0,
           paddingTop: 10,
         }}
         showsHorizontalScrollIndicator={false}
@@ -69,10 +69,10 @@ const CategorySlider = ({ categoryId, category }) => {
               })
             }
           >
-            <View className=" align-middle w-auto h-10 bg-white items-center content-center rounded-full">
+            <View className=" align-middle w-auto bg-white-50 dark:bg-gray-900 items-center content-center rounded-full">
               <ArrowRightIcon color="#16bdca" size={30} />
 
-              <Text className="text-xs mb-1 text-gray-500 px-4">View all</Text>
+              <Text className="text-xs mb-1 text-gray-500 dark:text-gray-200 px-4">View all</Text>
             </View>
           </TouchableOpacity>
         </View>

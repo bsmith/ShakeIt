@@ -29,12 +29,13 @@ const AppNavigator = () => {
         initialRouteName="Welcome"
         screenOptions={{
           headerStyle: {
-            backgroundColor: colorScheme === 'dark' ? colors.beach[800] : colors.beach[300],
+            backgroundColor: colorScheme === 'dark' ? colors.cerise[800] : colors.cerise[400],
           },
         // contentContainerStyle: {
         //   backgroundColor: colors.beach[800],
         // },
-          headerTitle: (props) => <Header {...props} />
+          headerTitle: (props) => <></>,
+          headerRight: (props) => <Header {...props} />
         }}
       >
         <Stack.Screen
