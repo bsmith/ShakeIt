@@ -7,6 +7,7 @@ import SCIngredients from "../components/SpecificCocktail/SCIngredients";
 import SCRecipe from "../components/SpecificCocktail/SCRecipe";
 import SCComments from "../components/SpecificCocktail/SCComments";
 import CocktailDescription from "../components/SpecificCocktail/CocktailDescription";
+import ButtonsFooter from "../components/ButtonsFooter";
 
 const SpecificCocktail = ({ route, navigation }) => {
   const { recipeId } = route.params;
@@ -31,7 +32,7 @@ const SpecificCocktail = ({ route, navigation }) => {
   }
 
   /* Look into changing the style of the font in the tabs */
-  return (
+  return (<>
     <Tabs.Container
       renderHeader={Header}
       renderTabBar={(props) => <MaterialTabBar className="bg-beach-400" {...props}/>}
@@ -48,6 +49,10 @@ const SpecificCocktail = ({ route, navigation }) => {
         </Tabs.ScrollView>
       </Tabs.Tab>
     </Tabs.Container>
+            <View className="bg-white">
+            <ButtonsFooter />
+          </View>
+          </>
   );
 };
 

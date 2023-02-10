@@ -7,7 +7,7 @@ const ButtonsFooter = () => {
   const navigation = useNavigation();
 
   return (
-    <View className="flex flex-row justify-around bg-cerise-400 dark:bg-cerise-800">
+    <View className="flex flex-row justify-around bg-cerise-400 dark:bg-cerise-800 pt-2">
       <Pressable
         className="items-center justify-center w-12 h-12 flex-column"
         onPress={() => navigation.navigate("Welcome")}
