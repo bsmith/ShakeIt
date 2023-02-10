@@ -25,8 +25,8 @@ const Welcome = () => {
   }, []);
 
   return (
-    <View className="flex space-y-4 h-full bg-beach-200">
-      <View className="flex-1">
+    <ScrollView className="flex space-y-4 h-full bg-beach-200">
+      <View className="flex-1 mb-4">
         <Image source={require("./ShakeIt.png")} className="max-w-md h-auto mx-auto mt-4" />
 
         <Text className="my-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
@@ -67,7 +67,7 @@ const Welcome = () => {
         </Pressable>
 
       </View>
-    </View>
+    </ScrollView>
   );
 };
 export default Welcome;
