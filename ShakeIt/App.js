@@ -8,6 +8,7 @@ import SpecificCocktail from "./screens/SpecificCocktail";
 import SearchInput from "./screens/SearchInput";
 import SearchResults from "./screens/SearchResults";
 import LeaveComment from "./screens/LeaveComment";
+import ShoppingList from "./screens/ShoppingList";
 import Header from "./components/Header";
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from "./tailwind.config";
@@ -70,6 +71,10 @@ const AppNavigator = () => {
         <Stack.Screen
           name="LeaveComment"
           component={LeaveComment}
+        />
+        <Stack.Screen
+        name="ShoppingList"
+        component={ShoppingList}
         />
       </Stack.Navigator>
     </NavigationContainer>
