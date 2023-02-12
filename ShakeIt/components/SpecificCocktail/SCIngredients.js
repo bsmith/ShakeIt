@@ -29,7 +29,7 @@ const SCIngredients = ({ recipe }) => {
             -
           </Text>
         </Pressable>
-      <Text className="text-xl font-bold mb-4">{}{"servings"}:</Text>
+      <Text className="text-xl font-bold mb-4">servings:</Text>
       <Pressable
           className="mt-6 mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
           // onPress={() => navigation.navigate("Explore")}

@@ -45,6 +45,19 @@ const SpecificCocktail = ({ route, navigation }) => {
           <SCRecipe recipe={recipe} />
           <View className=" flex-row-reverse items-center mx-40 px-2 h-12 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
         >
+          {/* <CheckIcon
+          onPress={() =>
+            navigation.navigate("SpecificCategory", {
+              categoryId: index,
+              categoryData: ingredients,
+            })
+          }
+          className="pb-2"
+        >
+          <View className="checkbox bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
+            
+          </View>
+        </CheckIcon> */}
            <Pressable
             onPress={() => navigation.navigate("ShoppingList")}
         >
