@@ -1,7 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 
-const CocktailDescription = ({ recipe }) => {
+const CocktailHeader = ({ recipe }) => {
   const img = !recipe.imgUrl.startsWith("http") ? null : (
     <Image
       className="mx-auto my-4"
@@ -25,9 +25,8 @@ const CocktailDescription = ({ recipe }) => {
       <Text className="text-lg text-center mb-8">
         {recipe.shortDescription}
       </Text>
-      <Text className="text-base">{recipe.description}</Text>
     </View>
   );
 };
 
-export default CocktailDescription;
+export default CocktailHeader;
