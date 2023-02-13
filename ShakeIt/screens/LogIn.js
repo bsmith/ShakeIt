@@ -151,7 +151,7 @@ const LogIn = ({ navigation }) => {
                 className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
                 onPress={logout}
               >
-                <Text className="text-center text-white font-bold py-2 rounded text-lg">
+                <Text className="text-center text-white-50 font-bold py-2 rounded text-lg">
                   LogOut
                 </Text>
               </Pressable>
