@@ -17,9 +17,11 @@ class ShakeItSearchApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+
 	@Test
 	void canFindBrandyAlexanderByName(){
 		List<Recipe> results = searchService.searchRecipes("alexander", true, false, false);
+		assertEquals(1, results.size());
 		assertEquals("Brandy Alexander", results.get(0).getName());
 	}
 }
