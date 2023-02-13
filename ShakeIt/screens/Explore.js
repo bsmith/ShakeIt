@@ -1,7 +1,6 @@
 import { View, Text, Pressable, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import "react-native-gesture-handler";
 
 import CategorySlider from "../components/Explore/CategorySlider";
 import { getAllCategories } from "../services/CategoriesService";

@@ -1,6 +1,4 @@
-import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useColorScheme } from "nativewind";
 import Explore from "./screens/Explore";
@@ -18,7 +16,6 @@ import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "./tailwind.config";
 import ManageAccount from "./screens/ManageAccount";
 
-// const Stack = createStackNavigator();
 const Stack = createNativeStackNavigator();
 const fullConfig = resolveConfig(tailwindConfig);
 const colors = fullConfig.theme.colors;
