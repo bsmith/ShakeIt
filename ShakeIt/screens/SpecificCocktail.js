@@ -76,9 +76,9 @@ const SpecificCocktail = ({ route, navigation }) => {
         </Pressable> */}
         
     </Tabs.Container>
-            <View className="bg-white">
+
             <ButtonsFooter />
-          </View>
+
           </>
   );
 };

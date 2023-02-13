@@ -3,13 +3,11 @@ import React, {useState} from "react";
 import { useNavigation } from "@react-navigation/native";
 
 const SCIngredients = ({ recipe }) => {
-  const [amount, setAmount] = useState({});
+  const [ingredient, setIngredient] = useState([]);
   const navigation = useNavigation();
   const [count, setCount] = useState(1);
   const ingredientItems = recipe.ingredients.map((ingredient, index) => {
-    // setAmount.push(count*ingredient.quantity)
-    console.log(amount)
-    /* add/remove 'mb-1' to control to the gap */
+
     return (
       <View className={`flex-row mb-1 px-4 w-full`} key={index}>
         <Text className="w-4 text-lg h-4">•</Text>
@@ -52,7 +50,7 @@ const SCIngredients = ({ recipe }) => {
         </View>
 
         <View className="mx-12 mt-10 px-2 h-12 justify-center bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded">
-          <Pressable onPress={() => navigation.navigate("ShoppingList", {ingredient: exactAmount,
+          <Pressable onPress={() => navigation.navigate("ShoppingList", {ingredients: recipe.ingredients, count: count
           })}>
             <Text>Add to list</Text>
           </Pressable>
