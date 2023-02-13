@@ -15,6 +15,7 @@ import Register from "./screens/Register";
 import Header from "./components/Header";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "./tailwind.config";
+import ManageAccount from "./screens/ManageAccount";
 
 // const Stack = createStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -40,7 +41,7 @@ const AppNavigator = () => {
           // contentContainerStyle: {
           //   backgroundColor: colors.beach[800],
           // },
-          headerTitle: props => <></>,
+          // headerTitle: props => <></>,
           headerRight: props => <Header {...props} />,
         }}
       >
@@ -67,6 +68,7 @@ const AppNavigator = () => {
         <Stack.Screen name="LeaveComment" component={LeaveComment} />
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ManageAccount" component={ManageAccount} />
       </Stack.Navigator>
     </NavigationContainer>
   );

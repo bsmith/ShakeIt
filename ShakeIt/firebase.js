@@ -6,6 +6,11 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { firebaseConfig } from "./firebaseConfig";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  initializeAuth,
+  getReactNativePersistence,
+} from "firebase/auth/react-native";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -33,9 +38,10 @@ if (getApps().length < 1) {
 }
 // const app = initializeApp(firebaseConfig);
 const db = getDatabase();
-const auth = getAuth();
 // const db2 = getFirestore(app);
-
+const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage),
+});
 // const auth = firebase.auth();
 // const analytics = getAnalytics(app);
 

@@ -13,6 +13,11 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { auth } from "../firebase";
+import {
+  signOut,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const LogIn = ({ navigation }) => {
   // const navigation = useNavigation();
@@ -21,20 +26,25 @@ const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        navigation.replace("Welcome");
-      }
+  // useEffect(() => {
+  //   const unsubscribe = auth.onAuthStateChanged(authUser => {
+  //     if (authUser) {
+  //       navigation.replace("Welcome");
+  //     }
+  //   });
+  //   return unsubscribe;
+  // }, []);
+  const logout = () => {
+    signOut(auth).then(() => {
+      navigation.navigate("Welcome");
     });
-    return unsubscribe;
-  }, []);
-
+  };
   const signIn = () => {
     if (email !== "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
-          navigation.navigate("ToDo", { user: userCredential.user });
+          // navigation.navigate("Welcome");
+          navigation.navigate("Welcome", { user: userCredential.user });
           setErrorMessage("");
           setEmail("");
           setPassword("");
@@ -134,6 +144,19 @@ const LogIn = ({ navigation }) => {
             </Text>
           </Pressable>
           <Text className="text-cerise-700">{errorMessage}</Text>
+
+          <View>
+            {auth.currentUser ? (
+              <Pressable
+                className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+                onPress={logout}
+              >
+                <Text className="text-center text-white font-bold py-2 rounded text-lg">
+                  LogOut
+                </Text>
+              </Pressable>
+            ) : null}
+          </View>
         </View>
       </ScrollView>
     </View>
