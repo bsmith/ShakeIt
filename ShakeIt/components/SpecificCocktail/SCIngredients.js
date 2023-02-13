@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import React from "react";
 
 const SCIngredients = ({ recipe }) => {
@@ -20,7 +20,25 @@ const SCIngredients = ({ recipe }) => {
 
   return (
     <View className="py-6 px-10 mx-auto max-w-md">
-      <Text className="text-xl font-bold mb-4">Ingredients:</Text>
+      <View className="flex flex-row">
+       <Pressable
+          className=" rounded mt-6 mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          // onPress={() => navigation.navigate("Explore")}
+        >
+          <Text className="text-center text-white font-bold py-2 rounded text-lg">
+            -
+          </Text>
+        </Pressable>
+      <Text className="text-xl font-bold mb-4">servings:</Text>
+      <Pressable
+          className="mt-6 mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          // onPress={() => navigation.navigate("Explore")}
+        >
+          <Text className="text-center text-white font-bold py-2 rounded-full text-lg">
+            +
+          </Text>
+        </Pressable>
+        </View>
       <Text className="text-base mb-4 text-left">{recipe.garnishes}</Text>
       {ingredientItems}
     </View>
