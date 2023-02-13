@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
-import "react-native-gesture-handler";
 
 const Welcome = ({ navigation }) => {
   // const navigation = useNavigation();

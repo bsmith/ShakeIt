@@ -1,45 +1,64 @@
 import { View, Text, Pressable } from "react-native";
-import React from "react";
+import React, {useState} from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const SCIngredients = ({ recipe }) => {
+  const [ingredient, setIngredient] = useState([]);
+  const navigation = useNavigation();
+  const [count, setCount] = useState(1);
   const ingredientItems = recipe.ingredients.map((ingredient, index) => {
-    const colour1 = "green-500";
-    const colour2 = "green-300";
-    const colour = index % 2 == 0 ? colour1 : colour2;
-    /* add/remove 'mb-1' to control to the gap */
+
     return (
-      <View className={`flex-row mb-1 px-4 w-full bg-${colour}`} key={index}>
+      <View className={`flex-row mb-1 px-4 w-full`} key={index}>
         <Text className="w-4 text-lg h-4">•</Text>
         <Text className="text-base grow">{ingredient.name}</Text>
         <Text className="text-base">
-          {ingredient.quantity} {ingredient.quantityUnit}
+          {count*ingredient.quantity} {ingredient.quantityUnit}
         </Text>
       </View>
     );
   });
 
   return (
-    <View className="py-6 px-10 mx-auto max-w-md">
-      <View className="flex flex-row">
-       <Pressable
-          className=" rounded mt-6 mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
-          // onPress={() => navigation.navigate("Explore")}
-        >
-          <Text className="text-center text-white font-bold py-2 rounded text-lg">
-            -
-          </Text>
-        </Pressable>
-      <Text className="text-xl font-bold mb-4">servings:</Text>
-      <Pressable
-          className="mt-6 mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
-          // onPress={() => navigation.navigate("Explore")}
-        >
-          <Text className="text-center text-white font-bold py-2 rounded-full text-lg">
-            +
-          </Text>
-        </Pressable>
+    // <View className="py-6 px-10 mx-auto max-w-md">
+    <View className="px-5 items-center">
+
+      <View className="flex-row justify-around items-center">
+
+        <View>
+          <Text className="text-xl font-bold mt-2 text-center">servings:</Text>
+
+          <View className="flex-row mt-2 align-middle">
+            <Pressable
+              className=" rounded mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+            onPress={() => (count >0) ? setCount(count - 1): setCount(0)}
+            >
+              <Text className="text-center text-white font-bold py-2 rounded text-lg">
+                -
+              </Text>
+            </Pressable>
+            <Text className="py-3"> {count} </Text>
+            <Pressable
+              className="mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+            onPress={() => setCount(count + 1)}
+            >
+              <Text className="text-center text-white font-bold py-2 rounded-full text-lg">
+                +
+              </Text>
+            </Pressable>
+          </View>
         </View>
-      <Text className="text-base mb-4 text-left">{recipe.garnishes}</Text>
+
+        <View className="mx-12 mt-10 px-2 h-12 justify-center bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded">
+          <Pressable onPress={() => navigation.navigate("ShoppingList", {ingredients: recipe.ingredients, count: count
+          })}>
+            <Text>Add to list</Text>
+          </Pressable>
+        </View>
+        
+      </View>
+
+      <Text className="text-base mb-4 text-left mt-2">{recipe.garnishes}</Text>
       {ingredientItems}
     </View>
   );
