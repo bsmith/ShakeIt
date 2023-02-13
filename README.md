@@ -1,10 +1,29 @@
 # ShakeIt
 
-## Running tunnel for java
+## Running the Java Search Service
 
-From the terminal in IntelliJ:
+ShakeIt uses a Java+Spring+Firebase server to provide a HTTP/REST API for searching
+for recipes.
 
-`(cd ../ShakeIt; npx ngrok http 8080)`
+Before running the server you need to configure a `serviceaccount.json` file in the `ShakeItSearch` directory.
+Go to the [Firebase Admin Console](https://console.firebase.google.com/) for your project.  Select \[cogwheel\] -> 'Project Settings' -> 'Service Accounts'.
+Select 'Java' and the 'Generate New Private Key' button.
+
+To build and run ShakeItSearch, just use this command in a new terminal.  You will need to keep this running while using the app.
+
+```
+(cd ShakeItSearch && ./mvnw package && java -jar target/ShakeItSearch-*.jar)
+```
+
+Alternatively, open ShakeItSearch in IntelliJ where you can run the `ShakeItSearchApplication` or the tests.
+
+Finally, to allow the Android app to contact the search service we are going to use
+[ngrok](https://ngrok.com/).  In another terminal you need to use the following command.  It writes
+a `searchConfig.js` file for the Android app after starting an ngrok tunnel.
+
+```
+npm run ngrokSearch
+```
 
 ## Example data
 
