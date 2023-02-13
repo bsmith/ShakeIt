@@ -8,4 +8,4 @@ export const getAllRecipes = async () => {
 export const getRecipeById = async (recipeId) => {
     const resp = await fetch(baseURL + '/recipes/' + recipeId + '.json');
     return resp.json();
-};
+}; 

@@ -1,11 +1,22 @@
-import { View, Text, TextInput, Button, Pressable, Keyboard, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Pressable,
+  Keyboard,
+  ActivityIndicator,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState, useCallback, useRef, useEffect } from "react";
+import * as Linking from "expo-linking";
 
-import { useAsyncSearch } from "./AsyncSearch.js";
+import { searchBase } from "../../searchConfig.js";
 
-import resolveConfig from 'tailwindcss/resolveConfig'
-import tailwindConfig from '../../tailwind.config.js'
+// import { useAsyncSearch } from "./AsyncSearch.js";
+
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config.js";
 const fullConfig = resolveConfig(tailwindConfig);
 const colors = fullConfig.theme.colors;
 
@@ -13,27 +24,29 @@ import {
   MagnifyingGlassIcon,
   AdjustmentsVerticalIcon,
 } from "react-native-heroicons/outline";
+import { NoSymbolIcon } from "react-native-heroicons/solid";
 
 /* NB. no caching of data or remote searching */
-const performSearchAsync = async (asyncSearch, searchTerm) => {
-  const searchService = await asyncSearch.getSearchService();
-  const results = searchService.searchByName(searchTerm);
-  return results;
-}
+// const performSearchAsync = async (asyncSearch, searchTerm) => {
+//   const searchService = await asyncSearch.getSearchService();
+//   const results = searchService.searchByName(searchTerm);
+//   return results;
+// }
 
 const SearchForm = () => {
   const navigation = useNavigation();
+  // const appUrl = Linking.useURL();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchStarted, setSearchStarted] = useState(false);
   const [message, setMessage] = useState("");
 
-  const asyncSearch = useAsyncSearch();
+  // const asyncSearch = useAsyncSearch();
 
-  useEffect(() => {
-    console.log(`Triggering index fetch on component mount`);
-    asyncSearch.fetchIndex();
-  }, []);
+  // useEffect(() => {
+  //   console.log(`Triggering index fetch on component mount`);
+  //   asyncSearch.fetchIndex();
+  // }, []);
 
   const handleSearchPress = useCallback(() => {
     /* Trim/reformat search terms */
@@ -41,31 +54,53 @@ const SearchForm = () => {
     setSearchTerm(trimmedSearch);
 
     /* Skip if searchTerm is blank */
-    if (trimmedSearch.length === 0)
-      return;
+    if (trimmedSearch.length === 0) return;
 
     Keyboard.dismiss();
-    console.log(`Searching search for '${trimmedSearch}'`)
+    console.log(`Searching search for '${trimmedSearch}'`);
     setSearchStarted(true);
-    setMessage('');
+    setMessage("");
 
-    // setTimeout(() => {
-    //   console.log(`Got search results back`)
-    //   setSearchStarted(false);
-    // }, 5000)
+    // const ourURL = Linking.createURL("abc");
+    // const urlMatch = ourURL.match(new RegExp(`//([^/]+):[0-9]+/`));
 
-    performSearchAsync(asyncSearch, trimmedSearch)
+    // console.log(urlMatch[1]);
+
+    // const hostname = urlMatch[1];
+    // const searchURL =
+    //   "http://" + hostname + ":8080/search?searchTerm=" + trimmedSearch;
+    // console.log(searchURL);
+
+    const searchURL = searchBase + "/search?searchTerm=" + trimmedSearch;
+
+    fetch(searchURL)
+      .then((results) => results.json())
       .then((results) => {
+        const { recipes } = results;
         setSearchStarted(false);
-        console.log(`Got results:`, results);
+        console.log(`Got results:`, recipes);
 
-        if (results.length === 0) {
-          setMessage('Nothing found');
+        if (recipes.length === 0) {
+          setMessage("Nothing found");
           return;
         }
-
-        navigation.navigate('SearchResults', { results });
+        navigation.navigate("SearchResults", { results: recipes });
       })
+      .catch((e) => {
+        console.log("fetch error", e);
+      });
+
+    // performSearchAsync(asyncSearch, trimmedSearch)
+    //   .then((results) => {
+    //     setSearchStarted(false);
+    //     console.log(`Got results:`, results);
+
+    //     if (results.length === 0) {
+    //       setMessage('Nothing found');
+    //       return;
+    //     }
+    //     navigation.navigate('SearchResults', { results });
+    //   })
   });
 
   return (
@@ -102,15 +137,15 @@ const SearchForm = () => {
         <Text>Ingredient</Text>
       </View> */}
 
-      { searchStarted &&
+      {searchStarted && (
         <Text className="text-3xl text-center mb-4">Searching...</Text>
-      }
+      )}
 
       <ActivityIndicator
         size="large"
         color={colors.beach[300]}
         animating={searchStarted}
-        />
+      />
     </View>
   );
 };
