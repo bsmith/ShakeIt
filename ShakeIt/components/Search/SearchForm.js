@@ -7,6 +7,7 @@ import {
   Keyboard,
   ActivityIndicator,
 } from "react-native";
+import Checkbox from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import * as Linking from "expo-linking";
@@ -33,20 +34,25 @@ import { NoSymbolIcon } from "react-native-heroicons/solid";
 //   return results;
 // }
 
+const CheckboxWithLabel = ({ className, value, onValueChange, children }) => {
+  return (
+    <View className={"flex-row justify-start items-center " + className}>
+      <Checkbox value={value} onValueChange={onValueChange} />
+      <Text className="text-lg ml-4">{children}</Text>
+    </View>
+  );
+};
+
 const SearchForm = () => {
   const navigation = useNavigation();
-  // const appUrl = Linking.useURL();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchStarted, setSearchStarted] = useState(false);
   const [message, setMessage] = useState("");
 
-  // const asyncSearch = useAsyncSearch();
-
-  // useEffect(() => {
-  //   console.log(`Triggering index fetch on component mount`);
-  //   asyncSearch.fetchIndex();
-  // }, []);
+  const [searchByName, setSearchByName] = useState(true);
+  const [searchByIngredient, setSearchByIngredient] = useState(true);
+  const [searchByTag, setSearchByTag] = useState(true);
 
   const handleSearchPress = useCallback(() => {
     /* Trim/reformat search terms */
@@ -61,17 +67,16 @@ const SearchForm = () => {
     setSearchStarted(true);
     setMessage("");
 
-    // const ourURL = Linking.createURL("abc");
-    // const urlMatch = ourURL.match(new RegExp(`//([^/]+):[0-9]+/`));
-
-    // console.log(urlMatch[1]);
-
-    // const hostname = urlMatch[1];
-    // const searchURL =
-    //   "http://" + hostname + ":8080/search?searchTerm=" + trimmedSearch;
-    // console.log(searchURL);
-
-    const searchURL = searchBase + "/search?searchTerm=" + trimmedSearch;
+    const searchURL =
+      searchBase +
+      "/search?searchTerm=" +
+      trimmedSearch +
+      "&byName=" +
+      (searchByName ? "true" : "false") +
+      "&byIngredient=" +
+      (searchByIngredient ? "true" : "false") +
+      "&byTag=" +
+      (searchByTag ? "true" : "false");
 
     fetch(searchURL)
       .then((results) => results.json())
@@ -136,6 +141,21 @@ const SearchForm = () => {
         <Text>Name</Text>
         <Text>Ingredient</Text>
       </View> */}
+
+      <CheckboxWithLabel value={searchByName} onValueChange={setSearchByName}>
+        Search by Name
+      </CheckboxWithLabel>
+
+      <CheckboxWithLabel
+        value={searchByIngredient}
+        onValueChange={setSearchByIngredient}
+      >
+        Search by Ingredient
+      </CheckboxWithLabel>
+
+      <CheckboxWithLabel value={searchByTag} onValueChange={setSearchByTag}>
+        Search by Tag
+      </CheckboxWithLabel>
 
       {searchStarted && (
         <Text className="text-3xl text-center mb-4">Searching...</Text>
