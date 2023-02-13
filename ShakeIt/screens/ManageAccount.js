@@ -14,6 +14,7 @@ import {
   deleteUser,
 } from "firebase/auth";
 import { Text, TextInput, View, Button, Pressable } from "react-native";
+import LargeButton from "../components/Basic/LargeButton";
 
 export default function ManageAccount({ navigation }) {
   let [newPassword, setNewPassword] = useState("");
@@ -93,39 +94,27 @@ export default function ManageAccount({ navigation }) {
         secureTextEntry={true}
         onChangeText={setNewPassword}
       />
-      <Pressable
-        className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+      <LargeButton
         onPress={updateUserPassword}
       >
-        <Text className="text-center text-white font-bold py-2 rounded text-lg">
-          Update Password
-        </Text>
-      </Pressable>
+        Update Password
+      </LargeButton>
 
-      <Pressable
-        className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+      <LargeButton
         onPress={deleteUserAndToDos}
       >
-        <Text className="text-center text-white font-bold py-2 rounded text-lg">
-          Delete User
-        </Text>
-      </Pressable>
-      <Pressable
-        className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+        Delete User
+      </LargeButton>
+      <LargeButton
         onPress={logout}
       >
-        <Text className="text-center text-white font-bold py-2 rounded text-lg">
-          Logout
-        </Text>
-      </Pressable>
-      <Pressable
-        className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+        Logout
+      </LargeButton>
+      <LargeButton
         onPress={() => navigation.navigate("Welcome")}
       >
-        <Text className="text-center text-white font-bold py-2 rounded text-lg">
-          Back to main page
-        </Text>
-      </Pressable>
+        Back to main page
+      </LargeButton>
     </View>
   );
 }

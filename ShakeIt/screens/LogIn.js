@@ -11,6 +11,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
+import LargeButton from "../components/Basic/LargeButton";
 import { auth } from "../firebase";
 import {
   signOut,
@@ -125,35 +126,26 @@ const LogIn = ({ navigation }) => {
             </View>
           </View>
 
-          <Pressable
-            className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          <LargeButton
             onPress={signIn}
           >
-            <Text className="text-center text-white font-bold py-2 rounded text-lg">
-              Login
-            </Text>
-          </Pressable>
+            Login
+          </LargeButton>
 
-          <Pressable
-            className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+          <LargeButton
             onPress={() => navigation.navigate("Register")}
           >
-            <Text className="text-center text-white font-bold py-2 rounded text-lg">
-              Register
-            </Text>
-          </Pressable>
+            Register
+          </LargeButton>
           <Text className="text-cerise-700">{errorMessage}</Text>
 
           <View>
             {auth.currentUser ? (
-              <Pressable
-                className="mx-auto mt-7 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+              <LargeButton
                 onPress={logout}
               >
-                <Text className="text-center text-white font-bold py-2 rounded text-lg">
-                  LogOut
-                </Text>
-              </Pressable>
+                LogOut
+              </LargeButton>
             ) : null}
           </View>
         </View>

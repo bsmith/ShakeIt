@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
+import LargeButton from "../components/Basic/LargeButton"
 
 const Welcome = ({ navigation }) => {
   // const navigation = useNavigation();
@@ -36,32 +37,23 @@ const Welcome = ({ navigation }) => {
           If you're looking for some cocktail ideas you're in the right place!
         </Text>
 
-        <Pressable
-          className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+        <LargeButton
           onPress={() => navigation.navigate("Explore")}
         >
-          <Text className="text-center text-white font-bold py-2 rounded text-lg">
-            Explore
-          </Text>
-        </Pressable>
+          Explore
+        </LargeButton>
 
-        <Pressable
-          className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+        <LargeButton
           onPress={() => navigation.navigate("SearchInput")}
         >
-          <Text className="text-center text-white font-bold py-2 rounded text-lg">
-            Search
-          </Text>
-        </Pressable>
+          Search
+        </LargeButton>
 
-        <Pressable
-          className="mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
+        <LargeButton
           onPress={() => navigation.navigate("LogIn")}
         >
-          <Text className="text-center text-white font-bold py-2 rounded text-lg">
-            Log in
-          </Text>
-        </Pressable>
+          Log in
+        </LargeButton>
       </View>
     </ScrollView>
   );
