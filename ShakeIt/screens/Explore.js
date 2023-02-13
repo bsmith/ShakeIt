@@ -1,6 +1,7 @@
 import { View, Text, Pressable, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import "react-native-gesture-handler";
 
 import CategorySlider from "../components/Explore/CategorySlider";
 import { getAllCategories } from "../services/CategoriesService";
@@ -13,19 +14,21 @@ const Explore = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    getAllCategories().then((categoriesData) => {
+    getAllCategories().then(categoriesData => {
       setCategoriesData(categoriesData);
     });
   }, []);
 
-  const categoryItems = Object.keys(categoriesData).map((index) => {
+  const categoryItems = Object.keys(categoriesData).map(index => {
     const category = categoriesData[index];
 
     return (
       <View key={index} className="mb-8">
         <View className="bg-gray-200 dark:bg-gray-900 pt-2 flex-row justify-between px-4 rounded-2xl">
           <View className=" flex items-center justify-between ">
-            <Text className="font-bold text-lg dark:text-white-50 ">{category.name}</Text>
+            <Text className="font-bold text-lg dark:text-white-50 ">
+              {category.name}
+            </Text>
           </View>
           <Pressable
             onPress={() =>

@@ -1,17 +1,12 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  Pressable,
-  Image,
-} from "react-native";
+import { View, Text, ScrollView, Pressable, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
+import "react-native-gesture-handler";
 
-const Welcome = () => {
-  const navigation = useNavigation();
+const Welcome = ({ navigation }) => {
+  // const navigation = useNavigation();
 
   const [value, setValue] = useState(null);
   useEffect(() => {
@@ -27,7 +22,10 @@ const Welcome = () => {
   return (
     <ScrollView className="flex space-y-4 h-full bg-beach-200">
       <View className="flex-1 mb-4">
-        <Image source={require("./ShakeIt.png")} className="max-w-md h-auto mx-auto mt-4" />
+        <Image
+          source={require("../assets/ShakeIt.png")}
+          className="max-w-md h-auto mx-auto mt-4"
+        />
 
         <Text className="my-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
           Welcome
@@ -65,7 +63,6 @@ const Welcome = () => {
             Log in
           </Text>
         </Pressable>
-
       </View>
     </ScrollView>
   );
