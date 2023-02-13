@@ -6,8 +6,9 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import ButtonsFooter from "../components/ButtonsFooter";
 import { CheckCircleIcon } from "react-native-heroicons/outline";
 
-const ShoppingList = () => {
+const ShoppingList = ({ingredient}) => {
   
+  console.log(ingredient);
   // const { Checkbox } = useColorScheme();
   const navigation = useNavigation();
 

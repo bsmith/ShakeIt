@@ -43,8 +43,7 @@ const SpecificCocktail = ({ route, navigation }) => {
         <Tabs.ScrollView className="bg-beach-200">
           <SCIngredients recipe={recipe} />
           <SCRecipe recipe={recipe} />
-          <View className=" flex-row-reverse items-center mx-40 px-2 h-12 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
-        >
+          
           {/* <CheckIcon
           onPress={() =>
             navigation.navigate("SpecificCategory", {
@@ -58,13 +57,7 @@ const SpecificCocktail = ({ route, navigation }) => {
             
           </View>
         </CheckIcon> */}
-           <Pressable
-            onPress={() => navigation.navigate("ShoppingList")}
-        >
-            <ListBulletIcon size={20} color="#000000" />
-            <Text>Add to list</Text>
-            </Pressable>
-          </View>
+
         </Tabs.ScrollView>
 
       </Tabs.Tab>
