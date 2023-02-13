@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class SearchService {
@@ -20,12 +21,21 @@ public class SearchService {
     @PostConstruct
     public void downloadRecipes(){
         System.out.println("downloading recipes");
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("/dataV1/recipes");
-        database.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = FirebaseDatabase.getInstance().getReference("/dataV1/recipes").orderByKey();
+        allRecipes = new ArrayList<>();
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot recipeSnapshot: dataSnapshot.getChildren()){
-                    System.out.println(recipeSnapshot.getValue());
+                    try {
+                        System.out.println(recipeSnapshot.getKey());
+                        Recipe recipe = recipeSnapshot.getValue(Recipe.class);
+                        recipe.setId(recipeSnapshot.getKey());
+                        allRecipes.add(recipe);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
 
             }
@@ -37,11 +47,27 @@ public class SearchService {
         });
 
     }
-    public List<Recipe> searchRecipes(String searchTerm){
-        System.out.printf("searchRecipes: %s%n", searchTerm);
-        ArrayList<Recipe> recipes = new ArrayList<>();
-        recipes.add(new Recipe("1", "2", "3", "4", "5"));
-        return recipes;
-    }
+    public List<Recipe> searchRecipes(String searchTerm, boolean byName,boolean byTag,boolean byIngredient) {
+        System.out.printf("searchRecipes: %s %s %s %s%n", searchTerm, byName, byTag, byIngredient);
+        searchTerm = searchTerm.toLowerCase();
+        ArrayList<Recipe> foundRecipes = new ArrayList<>();
+        for (Recipe recipe: allRecipes){
+            boolean shouldAdd = false;
+            if (byName && recipe.getName().toLowerCase().contains(searchTerm)){
+                shouldAdd = true;
+            }
+            if (byTag && recipe.searchTags(searchTerm)){
+                shouldAdd = true;
+            }
+            if (byIngredient && recipe.searchIngredients(searchTerm)){
+                shouldAdd = true;
+            }
+            if (shouldAdd){
+                foundRecipes.add(recipe);
+            }
 
+        }
+        return foundRecipes;
+
+    }
 }

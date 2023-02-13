@@ -14,9 +14,21 @@ public class SearchController {
     SearchService searchService;
 
     @GetMapping("/search")
-    public SearchResult search(@RequestParam String searchTerm){
-        System.out.printf("search: %s%n", searchTerm);
-        List<Recipe> recipes = searchService.searchRecipes(searchTerm);
+    public SearchResult search(
+            @RequestParam String searchTerm,
+            @RequestParam(required = false) Boolean  byName,
+            @RequestParam(required = false) Boolean  byTag,
+            @RequestParam(required = false) Boolean  byIngredient
+
+    ){
+        if (byName == null)
+            byName = true;
+        if (byTag == null)
+            byTag = true;
+        if (byIngredient == null)
+            byIngredient= true;
+        System.out.printf("search: %s %s %s %s%n", searchTerm, byName, byTag, byIngredient);
+        List<Recipe> recipes = searchService.searchRecipes(searchTerm, byName, byTag, byIngredient);
         return new SearchResult( recipes);
     }
 
