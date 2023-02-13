@@ -6,6 +6,7 @@ import {
   HomeIcon,
   MoonIcon,
 } from "react-native-heroicons/solid";
+
 import { useColorScheme } from "nativewind";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../firebase";
@@ -28,14 +29,14 @@ const Header = () => {
             : navigation.navigate("LogIn");
         }}
       >
-        <UserIcon size={20} color="#000000" />
+        <UserIcon size={20} color={colorScheme === "dark" ? "white" : "black"} />
       </Pressable>
 
       <Pressable
         className="items-center justify-center w-12 h-12"
         onPress={toggleColorScheme}
       >
-        <MoonIcon size={20} color="#000000" />
+        <MoonIcon size={20} color={colorScheme === "dark" ? "white" : "black"} />
       </Pressable>
     </View>
   );
