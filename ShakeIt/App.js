@@ -12,6 +12,7 @@ import SearchResults from "./screens/SearchResults";
 import LeaveComment from "./screens/LeaveComment";
 import LogIn from "./screens/LogIn";
 import Register from "./screens/Register";
+import ShoppingList from "./screens/ShoppingList";
 import Header from "./components/Header";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "./tailwind.config";
@@ -64,11 +65,26 @@ const AppNavigator = () => {
             title: "Search on ShakeIt",
           }}
         />
-        <Stack.Screen name="SearchResults" component={SearchResults} />
-        <Stack.Screen name="LeaveComment" component={LeaveComment} />
+
+        
+        
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="ManageAccount" component={ManageAccount} />
+
+        <Stack.Screen
+          name="SearchResults"
+          component={SearchResults}
+        />
+        <Stack.Screen
+          name="LeaveComment"
+          component={LeaveComment}
+        />
+        <Stack.Screen
+        name="ShoppingList"
+        component={ShoppingList}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
