@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
 import LargeButton from "../components/Basic/LargeButton";
 import { auth } from "../firebase";
 import {
@@ -65,7 +64,6 @@ const LogIn = ({ navigation }) => {
     //   className="flex-1"
     // >
     <View className="bg-beach-200 flex-1">
-      <StatusBar style="light" />
       <ScrollView>
         <View className="flex-column justify-start px-3">
           <Text className=" mt-6 mb-3 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-6xl dark:text-cerise-300 ">

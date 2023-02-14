@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useColorScheme } from "nativewind";
+import { StatusBar } from "expo-status-bar";
 import Explore from "./screens/Explore";
 import Welcome from "./screens/Welcome";
 import SpecificCategory from "./screens/SpecificCategory";
@@ -29,6 +30,7 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer>
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
