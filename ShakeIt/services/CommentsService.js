@@ -1,4 +1,6 @@
 import { db } from "../firebase";
+const baseUrl =
+  "https://shakeit-322b6-default-rtdb.europe-west1.firebasedatabase.app/dataV1/";
 
 // useEffect(() => {
 //     const starCountRef = ref(db, "recipe");
@@ -24,8 +26,8 @@ const exampleComment = {
   date: "2023-02-08",
 };
 
-export const getCommentsForRecipe = async (recipeId) => {
-  const resp = await fetch(baseUrl + '/comments/' + recipeId + '.json');
+export const getCommentsForRecipe = async recipeId => {
+  const resp = await fetch(baseUrl + "/comments/" + recipeId + ".json");
   const comments = await resp.json();
   return comments;
 };
@@ -33,5 +35,3 @@ export const getCommentsForRecipe = async (recipeId) => {
 export const postComment = async (recipeId, commentText) => {
   console.log(`postComment: ${recipeId}`, commentText);
 };
-
-
