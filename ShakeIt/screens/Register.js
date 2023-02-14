@@ -13,6 +13,7 @@ import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
 const Register = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -46,7 +47,7 @@ const Register = ({ navigation }) => {
         navigation.navigate("Welcome");
         // navigation.navigate("Welcome", {user: userCredential.user})
         console.log("Account created!");
-        const user = userCredential.user;
+        // const user = userCredential.user;
         updateProfile(auth.currentUser, {
           displayName: name,
           //   photoURL:
@@ -57,6 +58,7 @@ const Register = ({ navigation }) => {
         // ...
       })
       .catch(error => {
+        console.log(error);
         const errorCode = error.code;
         setValidationMessage(error.message);
         // ..

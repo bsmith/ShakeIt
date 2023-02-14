@@ -41,7 +41,7 @@ export const postComment = async (recipeId, commentText) => {
 
   const newCommentRef = push(dbRef);
   set(newCommentRef, {
-    userNickname: auth.currentUser.displayName,
+    userNickname: auth.currentUser ? auth.currentUser.displayName : "alcoholic",
     // userNickname: "Cocktail Enjoyer",
     commentText: commentText,
     date: moment().format("YYYY-MM-DD HH:mm"),
