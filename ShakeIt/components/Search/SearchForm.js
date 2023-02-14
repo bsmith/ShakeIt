@@ -10,11 +10,6 @@ import {
 import Checkbox from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import * as Linking from "expo-linking";
-
-import { searchBase } from "../../searchConfig.js";
-
-// import { useAsyncSearch } from "./AsyncSearch.js";
 
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "../../tailwind.config.js";
@@ -23,16 +18,9 @@ const colors = fullConfig.theme.colors;
 
 import {
   MagnifyingGlassIcon,
-  AdjustmentsVerticalIcon,
 } from "react-native-heroicons/outline";
 import { NoSymbolIcon } from "react-native-heroicons/solid";
-
-/* NB. no caching of data or remote searching */
-// const performSearchAsync = async (asyncSearch, searchTerm) => {
-//   const searchService = await asyncSearch.getSearchService();
-//   const results = searchService.searchByName(searchTerm);
-//   return results;
-// }
+import { getSearchResults } from "../../services/SearchService.js";
 
 const CheckboxWithLabel = ({ className, value, onValueChange, children }) => {
   return (
@@ -67,19 +55,11 @@ const SearchForm = () => {
     setSearchStarted(true);
     setMessage("");
 
-    const searchURL =
-      searchBase +
-      "/search?searchTerm=" +
-      trimmedSearch +
-      "&byName=" +
-      (searchByName ? "true" : "false") +
-      "&byIngredient=" +
-      (searchByIngredient ? "true" : "false") +
-      "&byTag=" +
-      (searchByTag ? "true" : "false");
-
-    fetch(searchURL)
-      .then((results) => results.json())
+    
+    getSearchResults(
+      trimmedSearch,
+      { searchByName, searchByIngredient, searchByTag }
+    )
       .then((results) => {
         const { recipes } = results;
         setSearchStarted(false);
@@ -94,18 +74,6 @@ const SearchForm = () => {
       .catch((e) => {
         console.log("fetch error", e);
       });
-
-    // performSearchAsync(asyncSearch, trimmedSearch)
-    //   .then((results) => {
-    //     setSearchStarted(false);
-    //     console.log(`Got results:`, results);
-
-    //     if (results.length === 0) {
-    //       setMessage('Nothing found');
-    //       return;
-    //     }
-    //     navigation.navigate('SearchResults', { results });
-    //   })
   });
 
   return (
