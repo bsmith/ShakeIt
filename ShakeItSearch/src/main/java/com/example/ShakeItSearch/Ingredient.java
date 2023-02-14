@@ -10,6 +10,12 @@ public class Ingredient {
     public Ingredient() {
     }
 
+    public Ingredient(String name, Double quantity, String quantityUnit) {
+        this.name = name;
+        this.quantity = quantity;
+        this.quantityUnit = quantityUnit;
+    }
+
     public String getName() {
         return name;
     }
