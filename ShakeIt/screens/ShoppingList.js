@@ -5,8 +5,32 @@ import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 import ButtonsFooter from "../components/ButtonsFooter";
 import { CheckCircleIcon } from "react-native-heroicons/outline";
-import { getData, removeValue } from "../services/ListService";
+import { getData, storeData, removeValue } from "../services/ListService";
 import LargeButton from "../components/Basic/LargeButton";
+import Checkbox from "expo-checkbox";
+
+const CheckboxShoppingList = ({
+  className,
+  value,
+  onValueChange,
+  children,
+}) => {
+  return (
+    <Pressable
+      className={
+        "flex-row justify-start items-center mb-2 " + (className ?? "")
+      }
+      onPress={() => onValueChange(!value)}
+    >
+      <Checkbox
+        className="h-12 w-12"
+        value={value}
+        onValueChange={onValueChange}
+      />
+      {children}
+    </Pressable>
+  );
+};
 
 const ShoppingList = () => {
   // const { Checkbox } = useColorScheme();
@@ -34,13 +58,27 @@ const ShoppingList = () => {
 
   const ingredients = value;
   const ingredientItems = ingredients.map((ingredient, index) => {
+    const handlePurchase = () => {
+      const newIngredients = [...ingredients];
+      const newIngredient = { ...ingredient };
+      newIngredient.purchased = !newIngredient.purchased;
+      newIngredients[index] = newIngredient;
+      storeData(newIngredients).then(() => {
+        setRefresh(refresh + 1);
+      });
+    };
     return (
       <View className={`flex-row mb-1 px-4 w-full`} key={index}>
-        <Text className="w-4 text-lg h-4">•</Text>
-        <Text className="text-base grow">{ingredient.name}</Text>
-        <Text className="text-base">
-          {ingredient.quantity} {ingredient.quantityUnit}
-        </Text>
+        <CheckboxShoppingList
+          value={ingredient.purchased}
+          onValueChange={handlePurchase}
+        >
+          {/* <Text className="w-4 text-lg h-4">•</Text> */}
+          <Text className="text-base grow">{ingredient.name}</Text>
+          <Text className="text-base">
+            {ingredient.quantity} {ingredient.quantityUnit}
+          </Text>
+        </CheckboxShoppingList>
       </View>
     );
   });
