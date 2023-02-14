@@ -1,21 +1,6 @@
-import { db } from "../firebase";
-
-// useEffect(() => {
-//     const starCountRef = ref(db, "recipe");
-//     // const starCountRef = ref(db, "recipe" + postId + "/starCount");
-//     onValue(starCountRef, snapshot => {
-//       const data = snapshot.val();
-
-//       setValue(data);
-//     });
-//   }, []);
-
-// // export const getRecipeById = async (recipeId) => {
-//     const resp = await fetch(baseURL + '/recipes/' + recipeId + '.json');
-//     const recipe = await resp.json();
-//     recipe.id = recipeId;
-//     return recipe;
-// };
+import { auth, db } from "../firebase";
+import { ref, onValue, push, set } from "firebase/database";
+import moment from "moment";
 
 const exampleComment = {
   userNickname: "Cocktail Enjoyer",
@@ -24,14 +9,41 @@ const exampleComment = {
   date: "2023-02-08",
 };
 
-export const getCommentsForRecipe = async (recipeId) => {
-  const resp = await fetch(baseUrl + '/comments/' + recipeId + '.json');
-  const comments = await resp.json();
-  return comments;
+export const getCommentsForRecipe = async recipeId => {
+  const dbRef = ref(db, "/dataV1/comments/" + recipeId);
+
+  const myPromise = new Promise((resolve, reject) => {
+    onValue(
+      dbRef,
+      snapshot => {
+        const comments = [];
+        snapshot.forEach(childSnapshot => {
+          const childKey = childSnapshot.key;
+          const childData = childSnapshot.val();
+          // ...
+          console.log(childData);
+          comments.push(childData);
+        });
+        resolve(comments);
+      },
+      {
+        onlyOnce: true,
+      }
+    );
+  });
+  return myPromise;
 };
 
 export const postComment = async (recipeId, commentText) => {
   console.log(`postComment: ${recipeId}`, commentText);
+
+  const dbRef = ref(db, "/dataV1/comments/" + recipeId);
+
+  const newCommentRef = push(dbRef);
+  set(newCommentRef, {
+    userNickname: auth.currentUser ? auth.currentUser.displayName : "alcoholic",
+    // userNickname: "Cocktail Enjoyer",
+    commentText: commentText,
+    date: moment().format("YYYY-MM-DD HH:mm"),
+  });
 };
-
-

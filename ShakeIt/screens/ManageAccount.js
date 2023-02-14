@@ -12,6 +12,7 @@ import {
   updatePassword,
   signInWithEmailAndPassword,
   deleteUser,
+  updateProfile,
 } from "firebase/auth";
 import { Text, TextInput, View, Button, Pressable } from "react-native";
 import LargeButton from "../components/Basic/LargeButton";
@@ -20,9 +21,22 @@ export default function ManageAccount({ navigation }) {
   let [newPassword, setNewPassword] = useState("");
   let [currentPassword, setCurrentPassword] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
+  const [newName, setNewName] = useState(auth.currentUser.displayName);
+  // const user = userCredential.user;
+  const displayName = auth.currentUser.displayName;
+  const displayEmail = auth.currentUser.email;
   let logout = () => {
     signOut(auth).then(() => {
       navigation.navigate("Welcome");
+    });
+  };
+
+  let updateUserName = () => {
+    setErrorMessage("");
+    updateProfile(auth.currentUser, {
+      displayName: newName,
+    }).catch(error => {
+      setErrorMessage(error.message);
     });
   };
 
@@ -53,26 +67,13 @@ export default function ManageAccount({ navigation }) {
         .then(userCredential => {
           const user = userCredential.user;
 
-          // Get all todos for user and delete
-          let batch = writeBatch(db);
-          const q = query(
-            collection(db, "todos"),
-            where("userId", "==", user.uid)
-          );
-          getDocs(q).then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-              batch.delete(doc.ref);
+          deleteUser(user)
+            .then(() => {
+              navigation.popToTop();
+            })
+            .catch(error => {
+              setErrorMessage(error.message);
             });
-            batch.commit();
-
-            deleteUser(user)
-              .then(() => {
-                navigation.popToTop();
-              })
-              .catch(error => {
-                setErrorMessage(error.message);
-              });
-          });
         })
         .catch(error => {
           setErrorMessage(error.message);
@@ -82,6 +83,11 @@ export default function ManageAccount({ navigation }) {
   return (
     <View>
       <Text>{errorMessage}</Text>
+      <Text>{displayEmail}</Text>
+      <Text>{displayName}</Text>
+      <TextInput placeholder="Name" value={newName} onChangeText={setNewName} />
+      <LargeButton onPress={updateUserName}>Update Name</LargeButton>
+
       <TextInput
         placeholder="Current Password"
         value={currentPassword}
@@ -94,25 +100,11 @@ export default function ManageAccount({ navigation }) {
         secureTextEntry={true}
         onChangeText={setNewPassword}
       />
-      <LargeButton
-        onPress={updateUserPassword}
-      >
-        Update Password
-      </LargeButton>
+      <LargeButton onPress={updateUserPassword}>Update Password</LargeButton>
 
-      <LargeButton
-        onPress={deleteUserAndToDos}
-      >
-        Delete User
-      </LargeButton>
-      <LargeButton
-        onPress={logout}
-      >
-        Logout
-      </LargeButton>
-      <LargeButton
-        onPress={() => navigation.navigate("Welcome")}
-      >
+      <LargeButton onPress={deleteUserAndToDos}>Delete User</LargeButton>
+      <LargeButton onPress={logout}>Logout</LargeButton>
+      <LargeButton onPress={() => navigation.navigate("Welcome")}>
         Back to main page
       </LargeButton>
     </View>

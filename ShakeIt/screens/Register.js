@@ -13,6 +13,7 @@ import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
 const Register = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -39,25 +40,25 @@ const Register = ({ navigation }) => {
   };
 
   const register = () => {
-    console.log("Account created!");
     console.log(email);
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         sendEmailVerification(auth.currentUser);
         navigation.navigate("Welcome");
         // navigation.navigate("Welcome", {user: userCredential.user})
-        console.log("Account created!111111");
-        const user = userCredential.user;
-        // authUser.user.updateProfile({
-        //   displayName: name,
-        //   photoURL:
-        //     imageUrl ||
-        //     "https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg",
-        // });
+        console.log("Account created!");
+        // const user = userCredential.user;
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          //   photoURL:
+          //     imageUrl ||
+          //     "https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg",
+        });
         // Signed in
         // ...
       })
       .catch(error => {
+        console.log(error);
         const errorCode = error.code;
         setValidationMessage(error.message);
         // ..
@@ -86,6 +87,17 @@ const Register = ({ navigation }) => {
             />
           </View>
         </View> */}
+        <View className="flex-row ">
+          <View className="flex-row flex-1  bg-gray-200 p-3 rounded">
+            <TextInput
+              className="grow text-lg text-center"
+              placeholder="Name"
+              // type="email"
+              value={name}
+              onChangeText={setName}
+            />
+          </View>
+        </View>
         <View className="flex-row ">
           <View className="flex-row flex-1  bg-gray-200 p-3 rounded">
             <TextInput
