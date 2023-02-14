@@ -42,8 +42,8 @@ const LogIn = ({ navigation }) => {
     if (email !== "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
-          // navigation.navigate("Welcome");
-          navigation.navigate("Welcome", { user: userCredential.user });
+          navigation.navigate("Welcome");
+          // navigation.navigate("Welcome", { user: userCredential.user });
           setErrorMessage("");
           setEmail("");
           setPassword("");
@@ -124,26 +124,16 @@ const LogIn = ({ navigation }) => {
             </View>
           </View>
 
-          <LargeButton
-            onPress={signIn}
-          >
-            Login
-          </LargeButton>
+          <LargeButton onPress={signIn}>Login</LargeButton>
 
-          <LargeButton
-            onPress={() => navigation.navigate("Register")}
-          >
+          <LargeButton onPress={() => navigation.navigate("Register")}>
             Register
           </LargeButton>
           <Text className="text-cerise-700">{errorMessage}</Text>
 
           <View>
             {auth.currentUser ? (
-              <LargeButton
-                onPress={logout}
-              >
-                LogOut
-              </LargeButton>
+              <LargeButton onPress={logout}>LogOut</LargeButton>
             ) : null}
           </View>
         </View>

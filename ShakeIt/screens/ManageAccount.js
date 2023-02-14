@@ -32,8 +32,11 @@ export default function ManageAccount({ navigation }) {
   };
 
   let updateUserName = () => {
+    setErrorMessage("");
     updateProfile(auth.currentUser, {
       displayName: newName,
+    }).catch(error => {
+      setErrorMessage(error.message);
     });
   };
 
@@ -64,26 +67,13 @@ export default function ManageAccount({ navigation }) {
         .then(userCredential => {
           const user = userCredential.user;
 
-          // Get all todos for user and delete
-          let batch = writeBatch(db);
-          const q = query(
-            collection(db, "todos"),
-            where("userId", "==", user.uid)
-          );
-          getDocs(q).then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-              batch.delete(doc.ref);
+          deleteUser(user)
+            .then(() => {
+              navigation.popToTop();
+            })
+            .catch(error => {
+              setErrorMessage(error.message);
             });
-            batch.commit();
-
-            deleteUser(user)
-              .then(() => {
-                navigation.popToTop();
-              })
-              .catch(error => {
-                setErrorMessage(error.message);
-              });
-          });
         })
         .catch(error => {
           setErrorMessage(error.message);
