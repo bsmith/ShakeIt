@@ -7,7 +7,8 @@ import { getRecipeById } from "../services/RecipesService";
 import SCIngredients from "../components/SpecificCocktail/SCIngredients";
 import SCRecipe from "../components/SpecificCocktail/SCRecipe";
 import SCComments from "../components/SpecificCocktail/SCComments";
-import CocktailDescription from "../components/SpecificCocktail/CocktailDescription";
+import SCDescription from "../components/SpecificCocktail/SCDescription";
+import CocktailHeader from "../components/SpecificCocktail/CocktailHeader";
 import ButtonsFooter from "../components/ButtonsFooter";
 import ShoppingList from "./ShoppingList";
 
@@ -25,7 +26,7 @@ const SpecificCocktail = ({ route, navigation }) => {
   const Header = () => {
     return (
       <View className=" bg-beach-200">
-        <CocktailDescription recipe={recipe} />
+        <CocktailHeader recipe={recipe} />
       </View>
     );
   };
@@ -40,6 +41,11 @@ const SpecificCocktail = ({ route, navigation }) => {
       renderHeader={Header}
       renderTabBar={(props) => <MaterialTabBar className="bg-beach-400" {...props}/>}
     >
+      <Tabs.Tab name="Description" key="description">
+        <Tabs.ScrollView className="bg-beach-200">
+          <SCDescription recipe={recipe} />
+        </Tabs.ScrollView>
+      </Tabs.Tab>
       <Tabs.Tab name="Recipe" key="recipe">
         <Tabs.ScrollView className="bg-beach-200">
           <SCIngredients recipe={recipe} />

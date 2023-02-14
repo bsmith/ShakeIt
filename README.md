@@ -1,6 +1,14 @@
 # ShakeIt
 
-## Running the Java Search Service
+## Running a ShakeIt demonstration
+
+A ShakeIt demonstration consists of three parts:
+
+* an Android app built with React Native and Expo Go
+* a database and authentication service provided by Firebase
+* a search service provided by a Java Spring Boot application
+
+### Running the Java Search Service
 
 ShakeIt uses a Java+Spring+Firebase server to provide a HTTP/REST API for searching
 for recipes.
@@ -12,7 +20,7 @@ Select 'Java' and the 'Generate New Private Key' button.
 To build and run ShakeItSearch, just use this command in a new terminal.  You will need to keep this running while using the app.
 
 ```
-(cd ShakeItSearch && ./mvnw package && java -jar target/ShakeItSearch-*.jar)
+(cd ShakeItSearch && ./build_and_run)
 ```
 
 Alternatively, open ShakeItSearch in IntelliJ where you can run the `ShakeItSearchApplication` or the tests.
