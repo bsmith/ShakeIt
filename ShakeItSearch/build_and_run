@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e -x
+
+./mvnw package && java -jar target/ShakeItSearch-*.jar
