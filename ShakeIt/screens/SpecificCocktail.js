@@ -12,6 +12,7 @@ import CocktailHeader from "../components/SpecificCocktail/CocktailHeader";
 import ButtonsFooter from "../components/ButtonsFooter";
 import ShoppingList from "./ShoppingList";
 
+
 const SpecificCocktail = ({ route, navigation }) => {
   const { recipeId } = route.params;
   const [recipe, setRecipe] = useState(null);
