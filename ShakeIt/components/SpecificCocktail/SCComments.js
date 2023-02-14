@@ -1,12 +1,9 @@
 import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import moment from 'moment';
-
-const exampleComment = {
-  userNickname: "Cocktail Enjoyer",
-  commentText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla imperdiet magna ut eros congue convallis. Donec vestibulum eleifend est, in lacinia ex varius sed. Nam nisl neque, luctus non dapibus.",
-  date: "2023-02-08"
-};
+import LargeButton from "../Basic/LargeButton";
+import { useNavigation } from "@react-navigation/native";
+import { getCommentsForRecipe } from "../../services/CommentsService";
 
 const Comment = ({comment}) => {
   // date: "8 Feb '23",
@@ -21,13 +18,26 @@ const Comment = ({comment}) => {
 }
 
 const SCComments = ({recipe}) => {
+  const navigation = useNavigation();
+
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    getCommentsForRecipe(recipe.id)
+      .then(setComments);
+  }, [recipe.id]);
+
+  const commentItems = comments.map((comment, index) =>
+    <Comment key={index} comment={comment} />);
+
   return (
     <View className="">
-      <Comment comment={exampleComment} />
-      <Comment comment={exampleComment} />
-      <Comment comment={exampleComment} />
-      <Comment comment={exampleComment} />
-      <Comment comment={exampleComment} />
+      <LargeButton
+        onPress={() => navigation.navigate("CommentForm", { recipeId: recipe.id, recipe: recipe })}
+      >
+        Post Comment
+      </LargeButton>
+      {commentItems}
     </View>
   );
 };
