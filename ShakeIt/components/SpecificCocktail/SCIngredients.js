@@ -1,11 +1,40 @@
 import { View, Text, Pressable } from "react-native";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useNavigation } from "@react-navigation/native";
+import { storeData, getData } from "../../services/ListService";
+import {AsyncStorage, useAsyncStorage} from '@react-native-async-storage/async-storage';
 
-const SCIngredients = ({ recipe }) => {
+const SCIngredients = ({recipe}) => {
   const [ingredient, setIngredient] = useState([]);
   const navigation = useNavigation();
   const [count, setCount] = useState(1);
+
+  const [value, setValue] = useState('value');
+  const { getItem, setItem } = useAsyncStorage('@storage_key');
+
+  
+  const sendData=() => {
+    storeData("apple")
+    console.log(getData())
+
+      }
+
+      const readItemFromStorage = async () => {
+        const item = await getItem();
+        setValue(item);
+        console.log({value})
+      };
+
+      useEffect(() => {
+        readItemFromStorage();
+      }, []);
+
+  const writeItemToStorage = async newValue => {
+   await setItem(newValue);
+   setValue(newValue);
+  };
+
+
   const ingredientItems = recipe.ingredients.map((ingredient, index) => {
 
     return (
@@ -18,6 +47,9 @@ const SCIngredients = ({ recipe }) => {
       </View>
     );
   });
+
+
+  
 
   return (
     // <View className="py-6 px-10 mx-auto max-w-md">
@@ -50,8 +82,19 @@ const SCIngredients = ({ recipe }) => {
         </View>
 
         <View className="mx-12 mt-10 px-2 h-12 justify-center bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded">
-          <Pressable onPress={() => navigation.navigate("ShoppingList", {ingredients: recipe.ingredients, count: count
-          })}>
+          <Pressable
+           onPress={() =>
+            writeItemToStorage(
+              "3"
+            )}
+          //  onPress={() => navigation.navigate("ShoppingList", {ingredients: recipe.ingredients.map(ingredient => {
+          //   return {
+          //     ...ingredient,
+          //     quantity: ingredient.quantity * count
+          //   }
+          // })
+          // })}
+          >
             <Text>Add to list</Text>
           </Pressable>
         </View>
@@ -60,8 +103,18 @@ const SCIngredients = ({ recipe }) => {
 
       <Text className="text-base mb-4 text-left mt-2">{recipe.garnishes}</Text>
       {ingredientItems}
+
+      <Text>Misha, {value}</Text>
     </View>
   );
 };
 
 export default SCIngredients;
+
+
+
+{/* <Pressable onPress={() => navigation.navigate("ShoppingList", {ingredients: recipe.ingredients.map(ingredient => {
+  return {
+    ...ingredient,
+    quantity: ingredient.quantity * count
+  } */}

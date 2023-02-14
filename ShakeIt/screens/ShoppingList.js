@@ -5,8 +5,9 @@ import { db } from "../firebase";
 import { getDatabase, ref, onValue } from "firebase/database";
 import ButtonsFooter from "../components/ButtonsFooter";
 import { CheckCircleIcon } from "react-native-heroicons/outline";
+import { getData } from "../services/ListService";
 
-const ShoppingList = ({ route }) => {
+const ShoppingList = () => {
   
   console.log(route.params.ingredients, route.params.count);
   // const { Checkbox } = useColorScheme();
@@ -50,7 +51,7 @@ const ShoppingList = ({ route }) => {
           >
           <CheckCircleIcon size={20} color="#000000" rounded-full/>
           </Pressable> */} 
-
+        {/* <Text> {getData()}</Text> */}
         </ScrollView>
 
         <ButtonsFooter />
