@@ -31,7 +31,8 @@ const AppNavigator = () => {
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer >
+    {/* // accessible={true}> */}
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
@@ -39,10 +40,8 @@ const AppNavigator = () => {
             backgroundColor:
               colorScheme === "dark" ? colors.cerise[800] : colors.cerise[400],
           },
-          // contentContainerStyle: {
-          //   backgroundColor: colors.beach[800],
-          // },
-          // headerTitle: props => <></>,
+            headerTintColor:
+              colorScheme === "dark" ? colors.white[50] : colors.gray[900],
           headerRight: props => <Header {...props} />,
         }}
       >
