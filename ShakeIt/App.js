@@ -16,6 +16,7 @@ import Header from "./components/Header";
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "./tailwind.config";
 import ManageAccount from "./screens/ManageAccount";
+import CommentForm from "./screens/CommentForm";
 
 const Stack = createNativeStackNavigator();
 const fullConfig = resolveConfig(tailwindConfig);
@@ -54,6 +55,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="SpecificCocktail"
           component={SpecificCocktail}
+          getId={({ params }) => params.recipeId}
+        />
+        <Stack.Screen
+          name="CommentForm"
+          component={CommentForm}
           getId={({ params }) => params.recipeId}
         />
         <Stack.Screen
