@@ -2,7 +2,6 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   Pressable,
   Keyboard,
   ActivityIndicator,
@@ -19,15 +18,17 @@ const colors = fullConfig.theme.colors;
 import {
   MagnifyingGlassIcon,
 } from "react-native-heroicons/outline";
-import { NoSymbolIcon } from "react-native-heroicons/solid";
 import { getSearchResults } from "../../services/SearchService.js";
 
 const CheckboxWithLabel = ({ className, value, onValueChange, children }) => {
   return (
-    <View className={"flex-row justify-start items-center " + className}>
-      <Checkbox value={value} onValueChange={onValueChange} />
-      <Text className="text-lg ml-4">{children}</Text>
-    </View>
+    <Pressable
+      className={"flex-row justify-start items-center mb-2 " + (className ?? "")}
+      onPress={() => onValueChange(!value)}
+    >
+      <Checkbox className="h-12 w-12" value={value} onValueChange={onValueChange} />
+      <Text className="text-lg ml-4 self-center">{children}</Text>
+    </Pressable>
   );
 };
 
