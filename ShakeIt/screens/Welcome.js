@@ -9,15 +9,6 @@ const Welcome = ({ navigation }) => {
   // const navigation = useNavigation();
 
   const [value, setValue] = useState(null);
-  useEffect(() => {
-    const starCountRef = ref(db, "recipe");
-    // const starCountRef = ref(db, "recipe" + postId + "/starCount");
-    onValue(starCountRef, snapshot => {
-      const data = snapshot.val();
-
-      setValue(data);
-    });
-  }, []);
 
   return (
     <ScrollView className="flex space-y-4 h-full bg-beach-200">
