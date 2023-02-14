@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { ref, onValue, push, set } from "firebase/database";
 import moment from "moment";
 
@@ -41,9 +41,9 @@ export const postComment = async (recipeId, commentText) => {
 
   const newCommentRef = push(dbRef);
   set(newCommentRef, {
-    userNickname: "Cocktail Enjoyer",
+    userNickname: auth.currentUser.displayName,
     // userNickname: "Cocktail Enjoyer",
     commentText: commentText,
-    date: moment().format("YYYY-MM-DD"),
+    date: moment().format("YYYY-MM-DD HH:mm"),
   });
 };

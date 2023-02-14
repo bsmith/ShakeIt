@@ -2,12 +2,12 @@ import { View, Text, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import LargeButton from "../Basic/LargeButton";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { getCommentsForRecipe } from "../../services/CommentsService";
 
 const Comment = ({ comment }) => {
   // date: "8 Feb '23",
-  const formattedDate = moment(comment.date).format("D MMM 'YY");
+  const formattedDate = moment(comment.date).format("D MMM 'YY, HH:mm");
   return (
     <View className="mt-6 mx-14 bg-white-50 px-4 py-4 dark:bg-gray-600">
       <Text className="text-base mb-4 text-left font-bold dark:text-white-50">
@@ -28,14 +28,19 @@ const SCComments = ({ recipe }) => {
 
   const [comments, setComments] = useState([]);
 
+  const isFocused = useIsFocused();
   useEffect(() => {
-    getCommentsForRecipe(recipe.id).then(comments => {
-      console.log(comments);
-      if (comments != null) {
-        setComments(Object.values(comments));
-      }
-    });
-  }, [recipe.id]);
+    const fetchData = () => {
+      getCommentsForRecipe(recipe.id).then(comments => {
+        // console.log(comments);
+        if (comments != null) {
+          setComments(Object.values(comments));
+        }
+      });
+    };
+    fetchData();
+    // navigation.addListener("willFocus", fetchData);
+  }, [recipe.id, isFocused]);
 
   const commentItems = comments.map((comment, index) => (
     <Comment key={index} comment={comment} />
