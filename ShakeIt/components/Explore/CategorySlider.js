@@ -9,6 +9,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { ArrowRightIcon, StarIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
+import { formatTags } from "../SpecificCocktail/formatTags";
 
 /* inside your component */
 
@@ -39,7 +40,7 @@ const CategorySlider = ({ categoryId, category }) => {
             <View className="flex-row items-center space-x-1">
               <StarIcon color="green" opacity={0.5} size={22} />
               <Text className="text-xs text-gray-500 dark:text-white-50">
-                <Text className="text-green-500">3</Text> · Tag
+                <Text className="text-green-500">3</Text> · {formatTags(cocktail)}
               </Text>
             </View>
           </View>

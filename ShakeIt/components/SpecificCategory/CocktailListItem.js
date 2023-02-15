@@ -1,6 +1,7 @@
 import { View, Text, Image, Pressable, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import { formatTags } from "../SpecificCocktail/formatTags";
 
 const CocktailListItem = ({ cocktail }) => {
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ const CocktailListItem = ({ cocktail }) => {
             {cocktail.name}
           </Text>
           <Text className="text-base mr-2 mb-2 dark:text-cerise-200">{cocktail.shortDescription}</Text>
-          <Text className="text-base mr-2 dark:text-cerise-200">#delicious</Text>
+          <Text className="text-base mr-2 dark:text-cerise-200">{formatTags(cocktail)}</Text>
         </View>
       </View>
     </TouchableOpacity>
