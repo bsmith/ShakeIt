@@ -11,9 +11,10 @@ import SCDescription from "../components/SpecificCocktail/SCDescription";
 import CocktailHeader from "../components/SpecificCocktail/CocktailHeader";
 import ButtonsFooter from "../components/ButtonsFooter";
 import ShoppingList from "./ShoppingList";
-
+import { useColorScheme } from "react-native";
 
 const SpecificCocktail = ({ route, navigation }) => {
+  const { colorScheme, toggleColorScheme } = useColorScheme();
   const { recipeId } = route.params;
   const [recipe, setRecipe] = useState(null);
 
@@ -25,7 +26,7 @@ const SpecificCocktail = ({ route, navigation }) => {
 
   const Header = () => {
     return (
-      <View className=" bg-beach-200">
+      <View className=" bg-beach-200 dark:bg-beach-900 ">
         <CocktailHeader recipe={recipe} />
       </View>
     );
@@ -35,58 +36,39 @@ const SpecificCocktail = ({ route, navigation }) => {
     return <Text>Loading...</Text>;
   }
 
-  /* Look into changing the style of the font in the tabs */
-  return (<>
-    <Tabs.Container
-      renderHeader={Header}
-      renderTabBar={(props) => <MaterialTabBar className="bg-beach-400" {...props}/>}
-    >
-      <Tabs.Tab name="Description" key="description">
-        <Tabs.ScrollView className="bg-beach-200">
-          <SCDescription recipe={recipe} />
-        </Tabs.ScrollView>
-      </Tabs.Tab>
-      <Tabs.Tab name="Recipe" key="recipe">
-        <Tabs.ScrollView className="bg-beach-200">
-          <SCIngredients recipe={recipe} />
-          <SCRecipe recipe={recipe} />
-          
-          {/* <CheckIcon
-          onPress={() =>
-            navigation.navigate("SpecificCategory", {
-              categoryId: index,
-              categoryData: ingredients,
-            })
-          }
-          className="pb-2"
-        >
-          <View className="checkbox bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
-            
-          </View>
-        </CheckIcon> */}
+  return (
+    <>
+      <Tabs.Container
+        renderHeader={Header}
+        renderTabBar={props => (
+          <MaterialTabBar
+            activeColor={colorScheme === "dark" ? "white" : "white"}
+            inactiveColor={colorScheme === "dark" ? "white" : "black"}
+            className="bg-beach-400 dark:bg-beach-600 "
+            {...props}
+          />
+        )}
+      >
+        <Tabs.Tab name="Description" key="description">
+          <Tabs.ScrollView className="bg-beach-200 dark:bg-beach-900">
+            <SCDescription recipe={recipe} />
+          </Tabs.ScrollView>
+        </Tabs.Tab>
+        <Tabs.Tab name="Recipe" key="recipe">
+          <Tabs.ScrollView className="bg-beach-200 dark:bg-beach-900">
+            <SCIngredients recipe={recipe} />
+            <SCRecipe recipe={recipe} />
+          </Tabs.ScrollView>
+        </Tabs.Tab>
+        <Tabs.Tab name="Comments" key="comments">
+          <Tabs.ScrollView className="bg-beach-200 dark:bg-beach-900  ">
+            <SCComments recipe={recipe} />
+          </Tabs.ScrollView>
+        </Tabs.Tab>
+      </Tabs.Container>
 
-        </Tabs.ScrollView>
-
-      </Tabs.Tab>
-      <Tabs.Tab name="Comments" key="comments">
-        <Tabs.ScrollView className="bg-beach-200">
-          <SCComments recipe={recipe} />
-        </Tabs.ScrollView>
-      </Tabs.Tab>
-      {/* <Pressable
-          className="mt-6 mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
-          // onPress={() => navigation.navigate("Explore")}
-        >
-          <Text className="text-center text-white font-bold py-2 rounded-full text-lg">
-            {ShoppingList}
-          </Text>
-        </Pressable> */}
-        
-    </Tabs.Container>
-
-            <ButtonsFooter />
-
-          </>
+      <ButtonsFooter />
+    </>
   );
 };
 

@@ -49,6 +49,7 @@ const SCComments = ({ recipe }) => {
   return (
     <View className="">
       <LargeButton
+        labelClassName={"dark:text-gray-900"}
         onPress={() =>
           navigation.navigate("CommentForm", {
             recipeId: recipe.id,

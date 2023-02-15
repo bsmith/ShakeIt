@@ -81,7 +81,7 @@ export default function ManageAccount({ navigation }) {
     }
   };
   return (
-    <View>
+    <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
       <Text>{errorMessage}</Text>
       <Text>{displayEmail}</Text>
       <Text>{displayName}</Text>

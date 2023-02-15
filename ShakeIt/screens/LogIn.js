@@ -57,71 +57,41 @@ const LogIn = ({ navigation }) => {
   };
 
   return (
-    // <KeyboardAvoidingView
-    //   behavior="padding"
-    //   // behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-    //   keyboardVerticalOffset={-900}
-    //   className="flex-1"
-    // >
-    <View className="bg-beach-200 flex-1">
+    <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
       <ScrollView>
         <View className="flex-column justify-start px-3">
-          <Text className=" mt-6 mb-3 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-6xl dark:text-cerise-300 ">
+          <Text className=" mt-6 mb-3 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-6xl dark:text-gray-200 ">
             Login
           </Text>
 
-          <Text className="my-4 text-xl text-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
+          <Text className="my-4 text-xl text-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white-50 ">
             Username
           </Text>
-          {/* Input box for search */}
-          <View className="flex-row items-center space-x-2 p-1">
-            <View className="flex-row flex-1 items-center space-x-2 bg-gray-200 p-3 rounded">
-              {/* was 'Search on ShakeIt' */}
-              <TextInput
-                className="grow text-lg text-center"
-                autofocus
-                placeholder="email@gmail.com"
-                type="name"
-                value={email}
-                // keyboard="default"
-                onChangeText={setEmail}
-                // onChangeText={setSearchTerm}
-              />
-            </View>
-          </View>
-          {/* <Text className="my-4 text-xl text-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
-            Username
-          </Text>
-          <View className="flex-row items-center space-x-2 p-1">
-            <View className="flex-row flex-1 items-center space-x-2 bg-gray-200 p-3 rounded">
-              <TextInput
-                className="grow text-lg text-center"
-                autofocus
-                placeholder="Misha Brain"
-                type="name"
-                value={name}
-                onChangeText={setName}
-              />
-            </View>
-          </View> */}
 
-          <Text className="my-4 text-xl text-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
+          <View className="flex-row flex-1 items-center mx-8 bg-gray-200 p-3 rounded">
+            <TextInput
+              className="grow text-lg text-center"
+              autofocus
+              placeholder="email@gmail.com"
+              type="name"
+              value={email}
+              onChangeText={setEmail}
+            />
+          </View>
+
+          <Text className="my-4 text-xl text-center leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white-50 ">
             Password
           </Text>
 
-          <View className="flex-row items-center space-x-2 p-1">
-            <View className="flex-row flex-1 items-center space-x-2 bg-gray-200 p-3 rounded">
-              {/* was 'Search on ShakeIt' */}
-              <TextInput
-                className="grow text-lg text-center"
-                placeholder="***********"
-                secureTextEntry
-                type="password"
-                value={password}
-                // keyboard="default"
-                onChangeText={setPassword}
-              />
-            </View>
+          <View className="flex-row flex-1 items-center mx-8 bg-gray-200 p-3 rounded">
+            <TextInput
+              className="grow text-lg text-center"
+              placeholder="***********"
+              secureTextEntry
+              type="password"
+              value={password}
+              onChangeText={setPassword}
+            />
           </View>
 
           <LargeButton onPress={signIn}>Login</LargeButton>
@@ -130,12 +100,6 @@ const LogIn = ({ navigation }) => {
             Register
           </LargeButton>
           <Text className="text-cerise-700">{errorMessage}</Text>
-
-          <View>
-            {auth.currentUser ? (
-              <LargeButton onPress={logout}>LogOut</LargeButton>
-            ) : null}
-          </View>
         </View>
       </ScrollView>
     </View>

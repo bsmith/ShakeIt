@@ -8,7 +8,6 @@ import SpecificCategory from "./screens/SpecificCategory";
 import SpecificCocktail from "./screens/SpecificCocktail";
 import SearchInput from "./screens/SearchInput";
 import SearchResults from "./screens/SearchResults";
-import LeaveComment from "./screens/LeaveComment";
 import LogIn from "./screens/LogIn";
 import Register from "./screens/Register";
 import ShoppingList from "./screens/ShoppingList";
@@ -31,18 +30,19 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-          {/* // accessible={true}> */}
+      {/* // accessible={true}> */}
       <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
       <Stack.Navigator
         initialRouteName="Welcome"
         screenOptions={{
           headerStyle: {
             backgroundColor:
-              colorScheme === "dark" ? colors.cerise[800] : colors.cerise[400],
+              colorScheme === "dark" ? colors.cerise[900] : colors.cerise[400],
           },
-            headerTintColor:
-              colorScheme === "dark" ? colors.white[50] : colors.gray[900],
+          headerTintColor:
+            colorScheme === "dark" ? colors.white[50] : colors.gray[900],
           headerRight: props => <Header {...props} />,
+          title: "🥂 ShakeIt",
         }}
       >
         <Stack.Screen name="Welcome" component={Welcome} />
@@ -70,25 +70,12 @@ const AppNavigator = () => {
           }}
         />
 
-        
-        
         <Stack.Screen name="LogIn" component={LogIn} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="ManageAccount" component={ManageAccount} />
 
-        <Stack.Screen
-          name="SearchResults"
-          component={SearchResults}
-        />
-        <Stack.Screen
-          name="LeaveComment"
-          component={LeaveComment}
-        />
-        <Stack.Screen
-        name="ShoppingList"
-        component={ShoppingList}
-        />
-
+        <Stack.Screen name="SearchResults" component={SearchResults} />
+        <Stack.Screen name="ShoppingList" component={ShoppingList} />
       </Stack.Navigator>
     </NavigationContainer>
   );
