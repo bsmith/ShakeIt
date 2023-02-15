@@ -6,6 +6,8 @@ const recipeData = {
         "description": "A Brandy Alexander is a brandy-based dessert cocktail consisting of cognac, crème de cacao, and cream, that became popular during the early 20th century.",
         "garnishes": "Garnish with grated nutmeg",
         "instructions": "Shake and strain into a chilled cocktail glass. Sprinkle with fresh ground nutmeg.",
+        "tags": ["creamy"],
+        "category": "classics",
         "ingredients": [
             {
                 "number": 1,
@@ -67,6 +69,7 @@ const recipeData = {
         "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Whiskey_Old_Fashioned1.jpg/500px-Whiskey_Old_Fashioned1.jpg",
         "description": "The old fashioned is a cocktail made by muddling sugar with bitters and water, adding whiskey (typically rye or bourbon), and garnishing with an orange slice or zest and a cocktail cherry. It is traditionally served with ice in an old fashioned glass (also known as a rocks glass).\n\n[[par]]Developed during the 19th century and given its name in the 1880s, it is an IBA Official Cocktail. It is also one of six basic drinks listed in David A. Embury's The Fine Art of Mixing Drinks.",
         "garnishes": "Orange zest twist",
+        "category": "classics",
         "instructions": "Stir all ingredients with ice and strain into an ice filled old flashioned glass.",
         "ingredients": [
             {

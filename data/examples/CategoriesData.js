@@ -16,14 +16,28 @@ const categoriesData = {
             "godfather": true,
         },
     },
+    "classics": {
+        "name": "Classics",
+        "members": { },
+    },
     "others": {
         "name": "Other Cocktails",
         "members": { },
-    }
+    },
 };
 
 let recipeIds = Object.keys(recipeData)
     .filter(id => id !== "[template]");
+
+for (const recipeId of recipeIds) {
+    const recipe = recipeData[recipeId];
+    if (recipe.category) {
+        if (!categoriesData[recipe.category])
+            categoriesData[recipe.category] = { name: recipe.category, members: { }};
+        const category = categoriesData[recipe.category];
+        category.members[recipeId] = true;
+    }
+}
 
 for (const category of Object.values(categoriesData)) {
     for (const recipeId of Object.keys(category.members)) {
@@ -45,6 +59,7 @@ for (const category of Object.values(categoriesData)) {
             name: recipe.name,
             shortDescription: recipe.shortDescription,
             imgUrl: recipe.imgUrl,
+            tags: recipe.tags,
         };
     }
 }
