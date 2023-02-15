@@ -1,28 +1,29 @@
 import recipeData from './RecipeData.js';
 
 const categoriesData = {
-    "brandy": {
-        "name": "Brandy Cocktails",
+    "american": {
+        "name": "American",
         "members": {
-            "brandyalexander": true,
-            "applejack": true,
-            "sidecar": true,
+
         },
+        "order": 2,
     },
-    "whiskey": {
-        "name": "Whisky Cocktails",
+    "european": {
+        "name": "European",
         "members": {
-            "oldfashioned": true,
-            "godfather": true,
+
         },
+        "order": 3,
     },
-    "classics": {
-        "name": "Classics",
+    "unforgettables": {
+        "name": "Unforgettables",
         "members": { },
+        "order": 1,
     },
     "others": {
         "name": "Other Cocktails",
         "members": { },
+        "order": 4,
     },
 };
 
