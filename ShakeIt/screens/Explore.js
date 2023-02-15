@@ -18,7 +18,10 @@ const Explore = () => {
     });
   }, []);
 
-  const categoryItems = Object.keys(categoriesData).map(index => {
+  const categoryKeys = Object.keys(categoriesData);
+  categoryKeys.sort((a, b)  => categoriesData[a].order - categoriesData[b].order);
+
+  const categoryItems = categoryKeys.map(index => {
     const category = categoriesData[index];
 
     return (
