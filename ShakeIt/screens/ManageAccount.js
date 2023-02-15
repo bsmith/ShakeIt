@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import { auth, db } from "../firebase";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  writeBatch,
-} from "firebase/firestore";
+import { auth } from "../firebase";
 import {
   signOut,
   updatePassword,
@@ -18,8 +11,6 @@ import {
   Text,
   TextInput,
   View,
-  Button,
-  Pressable,
   ScrollView,
 } from "react-native";
 import LargeButton from "../components/Basic/LargeButton";
@@ -29,7 +20,6 @@ export default function ManageAccount({ navigation }) {
   let [currentPassword, setCurrentPassword] = useState("");
   let [errorMessage, setErrorMessage] = useState("");
   const [newName, setNewName] = useState(auth.currentUser.displayName);
-  // const user = userCredential.user;
   const displayName = auth.currentUser.displayName;
   const displayEmail = auth.currentUser.email;
   let logout = () => {

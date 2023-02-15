@@ -2,7 +2,6 @@ import { View, Text, TextInput } from "react-native";
 import React, { useState } from "react";
 import LargeButton from "../components/Basic/LargeButton";
 import { postComment } from "../services/CommentsService";
-import { useNavigation } from "@react-navigation/native";
 
 const maxCommentLength = 200;
 
@@ -28,7 +27,6 @@ const CommentForm = ({ route, navigation }) => {
         <Text className="text-lg dark:text-white-50">Enter your comment:</Text>
 
         <TextInput
-          //   placeholder="Your comment"
           className="border p-2 dark:text-white-50 dark:border-gray-200"
           editable
           multiline

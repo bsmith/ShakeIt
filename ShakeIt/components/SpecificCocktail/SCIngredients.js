@@ -1,19 +1,9 @@
 import { View, Text, Pressable, ToastAndroid } from "react-native";
 import React, { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { storeData, getData, addIngredient } from "../../services/ListService";
-import {
-  AsyncStorage,
-  useAsyncStorage,
-} from "@react-native-async-storage/async-storage";
+import { addIngredient } from "../../services/ListService";
 
 const SCIngredients = ({ recipe }) => {
-  const [ingredient, setIngredient] = useState([]);
-  const navigation = useNavigation();
   const [count, setCount] = useState(1);
-
-  const [value, setValue] = useState();
-  const { getItem, setItem } = useAsyncStorage("@storage_key");
 
   const handleAddToList = async () => {
     for (const ingredient of recipe.ingredients) {
@@ -40,7 +30,6 @@ const SCIngredients = ({ recipe }) => {
   });
 
   return (
-    // <View className="py-6 px-10 mx-auto max-w-md">
     <View className="px-5 items-center">
       <View className="flex-row justify-around items-center">
         <View>
@@ -84,11 +73,3 @@ const SCIngredients = ({ recipe }) => {
 };
 
 export default SCIngredients;
-
-{
-  /* <Pressable onPress={() => navigation.navigate("ShoppingList", {ingredients: recipe.ingredients.map(ingredient => {
-  return {
-    ...ingredient,
-    quantity: ingredient.quantity * count
-  } */
-}

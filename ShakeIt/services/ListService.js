@@ -1,21 +1,5 @@
-// const baseURL = 'https://shakeit-322b6-default-rtdb.europe-west1.firebasedatabase.app/dataV1/';
-
-// export const getRecipeById = async (recipeId) => {
-//     const resp = await fetch(baseURL + '/recipes/' + recipeId + '.json');
-//     return resp.json();
-// };
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// export const storeData = async (value) => {
-//     try {
-//       const jsonValue = JSON.stringify(value)
-//       await AsyncStorage.setItem('@storage_Key', jsonValue)
-
-//     } catch (e) {
-//       // saving error
-//     }
-//   }
 export const storeData = async value => {
   try {
     await AsyncStorage.setItem("@ShoppingList", JSON.stringify(value));
@@ -64,5 +48,3 @@ export const addIngredient = async ingredient => {
   }
   return storeData(data);
 };
-
-// await AsyncStorage.setItem('@MyApp_user', JSON.stringify(USER_1))

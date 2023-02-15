@@ -1,5 +1,5 @@
-import { View, Text, ScrollView, Pressable, Image } from "react-native";
-import React, { useState, useEffect } from "react";
+import { Text, Pressable } from "react-native";
+import React from "react";
 
 const LargeButton = ({ className, labelClassName, children, ...props }) => {
   return (

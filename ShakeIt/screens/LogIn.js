@@ -3,47 +3,24 @@ import {
   Text,
   TextInput,
   ScrollView,
-  Pressable,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
 import LargeButton from "../components/Basic/LargeButton";
 import { auth } from "../firebase";
 import {
   signOut,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
 } from "firebase/auth";
 
 const LogIn = ({ navigation }) => {
-  // const navigation = useNavigation();
-
-  // const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = React.useState("");
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged(authUser => {
-  //     if (authUser) {
-  //       navigation.replace("Welcome");
-  //     }
-  //   });
-  //   return unsubscribe;
-  // }, []);
-  const logout = () => {
-    signOut(auth).then(() => {
-      navigation.navigate("Welcome");
-    });
-  };
   const signIn = () => {
     if (email !== "" && password !== "") {
       signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
           navigation.navigate("Welcome");
-          // navigation.navigate("Welcome", { user: userCredential.user });
           setErrorMessage("");
           setEmail("");
           setPassword("");

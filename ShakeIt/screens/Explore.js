@@ -4,8 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 
 import CategorySlider from "../components/Explore/CategorySlider";
 import { getAllCategories } from "../services/CategoriesService";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../tailwind.config";
 import ButtonsFooter from "../components/ButtonsFooter";
 
 const Explore = () => {
@@ -50,8 +48,6 @@ const Explore = () => {
       </View>
     );
   });
-  const fullConfig = resolveConfig(tailwindConfig);
-  const colors = fullConfig.theme.colors;
 
   return (
     <>
@@ -60,7 +56,6 @@ const Explore = () => {
           contentContainerStyle={{
             paddingHorizontal: 15,
             paddingTop: 10,
-            // backgroundColor: colors.beach[300]
           }}
           showsHorizontalScrollIndicator={false}
           className="pt-4  bg-beach-200 dark:bg-beach-900 dark:text-white-50"

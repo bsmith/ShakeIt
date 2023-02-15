@@ -4,14 +4,11 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  Pressable,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ArrowRightIcon, StarIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import { formatTags } from "../SpecificCocktail/formatTags";
-
-/* inside your component */
 
 const CategorySlider = ({ categoryId, category }) => {
   const navigation = useNavigation();

@@ -1,9 +1,9 @@
 import { View, Text, ScrollView } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import CocktailList from "../components/SpecificCategory/CocktailList";
 import ButtonsFooter from "../components/ButtonsFooter";
 
-const SpecificCategory = ({ route, navigation }) => {
+const SpecificCategory = ({ route }) => {
   const { categoryId, categoryData } = route.params;
   const cocktails = Object.values(categoryData.members);
   return (
