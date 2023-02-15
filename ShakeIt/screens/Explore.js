@@ -64,7 +64,7 @@ const Explore = () => {
         >
           {categoryItems}
         </ScrollView>
-        <View className="bg-white">
+        <View>
           <ButtonsFooter />
         </View>
       </View>

@@ -23,11 +23,15 @@ const CocktailListItem = ({ cocktail }) => {
           className="h-auto w-2/5 rounded-sm mr-4 rounded-l-2xl"
         />
         <View className="flex-column w-3/5 pr-2">
-          <Text className="text-xl mt-2 mb-2 justify-between font-bold dark:text-cerise-300">
+          <Text className="text-xl mt-2 mb-2 justify-between font-bold dark:text-white-50">
             {cocktail.name}
           </Text>
-          <Text className="text-base mr-2 mb-2 dark:text-cerise-200">{cocktail.shortDescription}</Text>
-          <Text className="text-base mr-2 dark:text-cerise-200">{formatTags(cocktail)}</Text>
+          <Text className="text-base mr-2 mb-2 dark:text-white-50">
+            {cocktail.shortDescription}
+          </Text>
+          <Text className="text-base mr-2 dark:text-white-50">
+            {formatTags(cocktail)}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

@@ -28,9 +28,11 @@ const SCIngredients = ({ recipe }) => {
   const ingredientItems = recipe.ingredients.map((ingredient, index) => {
     return (
       <View className={`flex-row mb-1 px-4 w-full`} key={index}>
-        <Text className="w-4 text-lg h-4">•</Text>
-        <Text className="text-base grow">{ingredient.name}</Text>
-        <Text className="text-base">
+        <Text className="w-4 text-lg h-4 dark:text-white-50">•</Text>
+        <Text className="text-base grow dark:text-white-50">
+          {ingredient.name}
+        </Text>
+        <Text className="text-base dark:text-white-50">
           {count * ingredient.quantity} {ingredient.quantityUnit}
         </Text>
       </View>
@@ -42,7 +44,9 @@ const SCIngredients = ({ recipe }) => {
     <View className="px-5 items-center">
       <View className="flex-row justify-around items-center">
         <View>
-          <Text className="text-xl font-bold mt-2 text-center">servings:</Text>
+          <Text className="text-xl font-bold mt-2 text-center dark:text-white-50">
+            servings:
+          </Text>
 
           <View className="flex-row mt-2 align-middle">
             <Pressable
@@ -53,7 +57,7 @@ const SCIngredients = ({ recipe }) => {
                 -
               </Text>
             </Pressable>
-            <Text className="py-3"> {count} </Text>
+            <Text className="py-3 dark:text-white-50"> {count} </Text>
             <Pressable
               className="mx-7 px-3 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded"
               onPress={() => setCount(count + 1)}
@@ -67,11 +71,13 @@ const SCIngredients = ({ recipe }) => {
 
         <View className="mx-12 mt-10 px-2 h-12 justify-center bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded">
           <Pressable onPress={handleAddToList}>
-            <Text>Add to list</Text>
+            <Text className="font-bold">Add to list</Text>
           </Pressable>
         </View>
       </View>
-      <Text className="text-base mb-4 text-left mt-2">{recipe.garnishes}</Text>
+      <Text className="text-base mb-4 text-left mt-2 dark:text-white-50">
+        {recipe.garnishes}
+      </Text>
       {ingredientItems}
     </View>
   );

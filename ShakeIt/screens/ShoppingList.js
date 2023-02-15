@@ -18,7 +18,8 @@ const CheckboxShoppingList = ({
   return (
     <Pressable
       className={
-        "flex-row justify-start items-center mb-2 " + (className ?? "")
+        "flex-row justify-start items-center mb-2 gap-3 flex-1 " +
+        (className ?? "")
       }
       onPress={() => onValueChange(!value)}
     >
@@ -78,14 +79,17 @@ const ShoppingList = () => {
         });
       };
       return (
-        <View className={`flex-row mb-1 px-4 w-full`} key={index}>
+        <View className={`flex-row mb-2 px-4 w-full`} key={index}>
           <CheckboxShoppingList
             value={ingredient.purchased}
             onValueChange={handlePurchase}
           >
             {/* <Text className="w-4 text-lg h-4">•</Text> */}
-            <Text className="text-base grow">{ingredient.name}</Text>
-            <Text className="text-base">
+
+            <Text className="text-base grow dark:text-white-50">
+              {ingredient.name}
+            </Text>
+            <Text className="text-base dark:text-white-50">
               {ingredient.quantity} {ingredient.quantityUnit}
             </Text>
           </CheckboxShoppingList>
@@ -94,34 +98,47 @@ const ShoppingList = () => {
     });
 
   return (
-    <ScrollView>
-      <View className="bg-gray-200 dark:bg-gray-900 pt-2 flex-row justify-between px-4 rounded-2xl">
-        <View className=" flex items-center justify-between ">
-          <Text className="font-bold text-lg dark:text-white-50 ">To buy</Text>
+    <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
+      <ScrollView
+        contentContainerStyle={{
+          paddingHorizontal: 15,
+          paddingTop: 10,
+          // backgroundColor: colors.beach[300]
+        }}
+      >
+        <View className="mb-4 bg-gray-200 dark:bg-gray-900 pt-2 flex-row justify-between px-4 rounded-2xl">
+          <View className=" flex items-center justify-between ">
+            <Text className="font-bold text-lg dark:text-white-50 ">
+              Shopping list
+            </Text>
+          </View>
+          <Pressable onPress={handleClearList} className="pb-2">
+            <Text className="bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
+              Clear all
+            </Text>
+          </Pressable>
         </View>
-        <Pressable onPress={handleClearList} className="pb-2">
-          <Text className="bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
-            Clear all
-          </Text>
-        </Pressable>
-      </View>
 
-      {ingredientItems(notPurchasedItems)}
+        {ingredientItems(notPurchasedItems)}
 
-      <View className="bg-gray-200 dark:bg-gray-900 pt-2 flex-row justify-between px-4 rounded-2xl">
-        <View className=" flex items-center justify-between ">
-          <Text className="font-bold text-lg dark:text-white-50 ">
-            Purchased Items
-          </Text>
+        <View className="mb-4 bg-gray-200 dark:bg-gray-900 pt-2 flex-row justify-between px-4 rounded-2xl">
+          <View className=" flex items-center justify-between ">
+            <Text className="font-bold text-lg dark:text-white-50 ">
+              Purchased Items
+            </Text>
+          </View>
+          <Pressable onPress={handleClearPurchasedList} className="pb-2">
+            <Text className="bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
+              clear
+            </Text>
+          </Pressable>
         </View>
-        <Pressable onPress={handleClearPurchasedList} className="pb-2">
-          <Text className="bg-cerise-400 dark:bg-cerise-600 text-center font-bold py-1 rounded-full w-20">
-            clear
-          </Text>
-        </Pressable>
+        {ingredientItems(purchasedItems)}
+      </ScrollView>
+      <View>
+        <ButtonsFooter />
       </View>
-      {ingredientItems(purchasedItems)}
-    </ScrollView>
+    </View>
   );
 };
 

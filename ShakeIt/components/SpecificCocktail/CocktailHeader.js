@@ -4,7 +4,7 @@ import React from "react";
 const CocktailHeader = ({ recipe }) => {
   const img = !recipe.imgUrl.startsWith("http") ? null : (
     <Image
-      className="mx-auto my-4"
+      className="mx-auto my-4 rounded-xl"
       source={{
         uri: recipe.imgUrl,
         width: 256,
@@ -17,12 +17,12 @@ const CocktailHeader = ({ recipe }) => {
   );
 
   return (
-    <View className="py-6 px-6 mx-auto max-w-md ">
-      <Text className="my-4 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-cerise-300 ">
+    <View className="py-4 px-6 mx-auto max-w-md ">
+      <Text className="my-2 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-gray-200 ">
         {recipe.name}
       </Text>
       {img}
-      <Text className="text-lg text-center mb-8">
+      <Text className="text-lg text-center dark:text-white-50">
         {recipe.shortDescription}
       </Text>
     </View>

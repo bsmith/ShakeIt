@@ -36,11 +36,14 @@ const CategorySlider = ({ categoryId, category }) => {
           {/* <Text>{cocktail.name}</Text> */}
 
           <View className="px-3 pb-4">
-            <Text className="font-bold text-lg pt-2 dark:text-white-50">{cocktail.name}</Text>
+            <Text className="font-bold text-lg pt-2 dark:text-white-50">
+              {cocktail.name}
+            </Text>
             <View className="flex-row items-center space-x-1">
               <StarIcon color="green" opacity={0.5} size={22} />
               <Text className="text-xs text-gray-500 dark:text-white-50">
-                <Text className="text-green-500">3</Text> · {formatTags(cocktail)}
+                <Text className="text-green-500">3</Text> ·{" "}
+                {formatTags(cocktail)}
               </Text>
             </View>
           </View>
@@ -50,7 +53,7 @@ const CategorySlider = ({ categoryId, category }) => {
   });
 
   return (
-    <View className="flex">
+    <View className="flex ">
       <ScrollView
         horizontal
         contentContainerStyle={{
@@ -61,7 +64,7 @@ const CategorySlider = ({ categoryId, category }) => {
         className="p-1"
       >
         {cocktailItems}
-        <View className="flex align-middle">
+        <View className="flex-row items-center">
           <TouchableOpacity
             onPress={() =>
               navigation.navigate("SpecificCategory", {
@@ -70,10 +73,12 @@ const CategorySlider = ({ categoryId, category }) => {
               })
             }
           >
-            <View className=" align-middle w-auto bg-white-50 dark:bg-gray-900 items-center content-center rounded-full">
+            <View className=" w-auto bg-white-50 dark:bg-gray-900 items-center rounded-full">
               <ArrowRightIcon color="#16bdca" size={30} />
 
-              <Text className="text-xs mb-1 text-gray-500 dark:text-gray-200 px-4">View all</Text>
+              <Text className="text-xs mb-1 text-gray-500 dark:text-gray-200 px-4">
+                View all
+              </Text>
             </View>
           </TouchableOpacity>
         </View>
