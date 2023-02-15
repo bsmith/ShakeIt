@@ -50,7 +50,7 @@ const Register = ({ navigation }) => {
   return (
     <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
       <ScrollView>
-        <Text className=" mt-6 mb-3 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900  md:text-5xl lg:text-6xl dark:text-gray-200 ">
+        <Text className=" mt-6 mb-3 mx-2 text-4xl text-center font-extrabold leading-none tracking-tight text-gray-900   dark:text-gray-200 ">
           Create a ShakeIt account
         </Text>
 

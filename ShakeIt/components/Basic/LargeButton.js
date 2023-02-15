@@ -5,7 +5,7 @@ const LargeButton = ({ className, labelClassName, children, ...props }) => {
   return (
     <Pressable
       className={
-        "mx-auto mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded " +
+        "mt-6 mx-7 bg-cerise-400 dark:bg-cerise-600 active:bg-cerise-600 hover:bg-cerise-600 rounded " +
         className
       }
       {...props}
