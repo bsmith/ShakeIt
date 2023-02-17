@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import LargeButton from "../Basic/LargeButton";
@@ -32,14 +32,12 @@ const SCComments = ({ recipe }) => {
   useEffect(() => {
     const fetchData = () => {
       getCommentsForRecipe(recipe.id).then(comments => {
-        // console.log(comments);
         if (comments != null) {
           setComments(Object.values(comments));
         }
       });
     };
     fetchData();
-    // navigation.addListener("willFocus", fetchData);
   }, [recipe.id, isFocused]);
 
   const commentItems = comments.map((comment, index) => (

@@ -1,10 +1,10 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import React from "react";
 
 import CocktailList from "../components/SpecificCategory/CocktailList";
 import ButtonsFooter from "../components/ButtonsFooter";
 
-const SearchResults = ({ route, navigation }) => {
+const SearchResults = ({ route }) => {
   const { results } = route.params;
 
   return (

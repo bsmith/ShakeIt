@@ -1,16 +1,9 @@
-import { View, Text, ScrollView, Pressable, Image } from "react-native";
-import React, { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { db } from "../firebase";
-import { getDatabase, ref, onValue } from "firebase/database";
+import { View, Text, ScrollView, Image } from "react-native";
+import React from "react";
 import LargeButton from "../components/Basic/LargeButton";
 import ButtonsFooter from "../components/ButtonsFooter";
 
 const Welcome = ({ navigation }) => {
-  // const navigation = useNavigation();
-
-  const [value, setValue] = useState(null);
-
   return (
     <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
       <ScrollView>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import { MaterialTabBar, Tabs } from "react-native-collapsible-tab-view";
-import { ListBulletIcon } from "react-native-heroicons/solid";
 
 import { getRecipeById } from "../services/RecipesService";
 import SCIngredients from "../components/SpecificCocktail/SCIngredients";
@@ -10,7 +9,6 @@ import SCComments from "../components/SpecificCocktail/SCComments";
 import SCDescription from "../components/SpecificCocktail/SCDescription";
 import CocktailHeader from "../components/SpecificCocktail/CocktailHeader";
 import ButtonsFooter from "../components/ButtonsFooter";
-import ShoppingList from "./ShoppingList";
 import { useColorScheme } from "react-native";
 
 const SpecificCocktail = ({ route, navigation }) => {
