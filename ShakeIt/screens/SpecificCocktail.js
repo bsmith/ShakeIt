@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from "react-native";
-import { MaterialTabBar, Tabs } from "react-native-collapsible-tab-view";
+import { View, Text, ScrollView } from "react-native";
+// import { MaterialTabBar, Tabs } from "react-native-collapsible-tab-view";
 
 import { getRecipeById } from "../services/RecipesService";
 import SCIngredients from "../components/SpecificCocktail/SCIngredients";
@@ -36,7 +36,7 @@ const SpecificCocktail = ({ route, navigation }) => {
 
   return (
     <>
-      <Tabs.Container
+      {/* <Tabs.Container
         renderHeader={Header}
         renderTabBar={props => (
           <MaterialTabBar
@@ -63,9 +63,26 @@ const SpecificCocktail = ({ route, navigation }) => {
             <SCComments recipe={recipe} />
           </Tabs.ScrollView>
         </Tabs.Tab>
-      </Tabs.Container>
+      </Tabs.Container> */}
 
-      <ButtonsFooter />
+      <View className="bg-beach-200 flex-1 dark:bg-beach-900 dark:text-white-50">
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: 15,
+            paddingTop: 10,
+          }}
+        >
+          <Header />
+          <SCDescription recipe={recipe} />
+          <SCIngredients recipe={recipe} />
+          <SCRecipe recipe={recipe} />
+          <SCComments recipe={recipe} />
+        </ScrollView>
+
+        <View>
+          <ButtonsFooter />
+        </View>
+      </View>
     </>
   );
 };
